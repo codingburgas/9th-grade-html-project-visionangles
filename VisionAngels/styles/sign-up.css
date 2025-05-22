@@ -1,0 +1,100 @@
+body {
+background: linear-gradient(to top, #a26769, #d5b9b2, #ece2d0);
+display: flex;
+justify-content: center;
+align-items: center;
+font-family:'Franklin Gothic Medium', Arial, sans-serif;
+height: 100vh;
+margin: 0;
+}
+
+.container {
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+0 10px 10px rgba(0,0,0,0.22);
+display: flex;
+width: 768px;
+max-width: 100%;
+min-height: 480px;
+overflow: hidden;
+}
+
+.form-container {
+width: 50%;
+background-color: #d5b9b2;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 0 50px;
+text-align: center;
+}
+
+form {
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+input {
+background-color: #eee;
+border: none;
+padding: 12px 15px;
+margin: 8px 0;
+width: 100%;
+}
+
+button {
+border-radius: 20px;
+border: 1px solid #6d2e46;
+background-color: #6d2e46;
+color: #FFFFFF;
+font-weight: bold;
+padding: 12px 45px;
+letter-spacing: 1px;
+text-transform: uppercase;
+transition: transform 80ms ease-in;
+cursor: pointer;
+margin: 10px 0;
+}
+
+button:active {
+transform: scale(0.95);
+}
+
+button:focus {
+outline: none;
+}
+
+.social-container {
+margin: 20px 0 10px;
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+.social-container a {
+border: 1px solid #DDDDDD;
+border-radius: 50%;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+height: 40px;
+width: 40px;
+color: #333;
+text-decoration: none;
+}
+
+.overlay-container {
+width: 50%;
+background: linear-gradient(to left, #d5b9b2, #6d2e46);
+color: #000;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 0 40px;
+text-align: center;
+}
