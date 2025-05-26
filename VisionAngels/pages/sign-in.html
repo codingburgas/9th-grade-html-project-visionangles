@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisionAngels</title>
-    <link rel="stylesheet" href="../styles/sign-in.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Vision Angels - Sign In</title>
+    <link rel="stylesheet" href="../styles/auth.css">
 </head>
 <body>
+    <div class="fire-particles" id="fireParticles"></div>
+    
     <div class="container">
-        <div class="form-container">
-            <form action="#">
-                <h1>Sign in</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#" class="forgot-password">Forgot your password?</a>
-                <button>SIGN IN</button>
-                <div class="social-container">
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.google.co.uk/"><i class="fab fa-google-plus-g"></i></a>
-                <a href="https://bg.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <p>Don't have an account? <a href="../pages/sign-up.html">Sign up</a></p>
-            </form>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1>Vision Angels</h1>
         </div>
-        <div class="overlay-container">
-            <h1>Welcome Back!</h1>
-			<p>To keep get into your account please eneter your personal information</p>
+
+        <form id="signInForm">
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group password-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="primary-btn">Sign In</button>
+
+            <button type="button" class="google-btn">
+                <div class="google-icon"></div>
+                Sign in with Google
+            </button>
+        </form>
+
+        <div class="auth-link">
+            Don't have an account? <a href="sign-up.html">Register for emergency alerts!</a>
         </div>
     </div>
+
+    <div class="footer">
+        <div>Join over <span class="highlight">2M</span> emergency responders worldwide</div>
+        <div class="user-avatars">
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+        </div>
+    </div>
+
+    <script src="../script/auth.js"></script>
 </body>
 </html>
