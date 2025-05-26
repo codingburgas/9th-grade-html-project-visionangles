@@ -3,34 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisionAngels</title>
-    <link rel="stylesheet" href="../styles/sign-up.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Vision Angels - Sign Up</title>
+    <link rel="stylesheet" href="../styles/auth.css">
 </head>
 <body>
+    <div class="fire-particles" id="fireParticles"></div>
+   
     <div class="container">
-        <div class="overlay-container">
-            <h1>Hey, there!</h1>
-            <p>Just a few quick details and you’ll be all set. 
-            Join us and start exploring everything we have to offer</p>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1>Vision Angels</h1>
         </div>
-        <div class="form-container">
-            <form action="#">
-                <h1>Sign up</h1>
-                <input type="fname" placeholder="First name" />
-                <input type="lname" placeholder="Last name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>SIGN UP</button>
-                <div class="social-container">
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.google.co.uk/"><i class="fab fa-google-plus-g"></i></a>
-                <a href="https://bg.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+        <form id="signUpForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="firstName" placeholder="First Name" required>
                 </div>
-                <p>Alreday have an account? <a href="../pages/sign-in.html">Sign in</a></p>
-            </form>
+                <div class="form-group">
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="email" id="signupEmail" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <select id="role" required>
+                    <option value="">Select Your Role</option>
+                    <option value="citizen">Citizen Reporter</option>
+                    <option value="volunteer">Firefighter</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group password-group">
+                    <input type="password" id="password" placeholder="Create Password" required>
+                </div>
+                <div class="form-group password-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="primary-btn">Create Account</button>
+            <button type="button" class="google-btn">
+                <div class="google-icon"></div>
+                Sign up with Google
+            </button>
+        </form>
+        <div class="auth-link">
+            Already have an account? <a href="sign-in.html">Sign in here</a>
         </div>
-        
     </div>
+    <div class="footer">
+        <div>Join over <span class="highlight">2M</span> emergency responders worldwide</div>
+        <div class="user-avatars">
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+        </div>
+    </div>
+
+    <script src="../script/auth.js"></script>
 </body>
 </html>
