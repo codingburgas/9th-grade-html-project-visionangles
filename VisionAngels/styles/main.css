@@ -150,6 +150,14 @@ body::before {
     width: 100%;
 }
 
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: #ff6347;
+}
+
 .nav-cta {
     display: flex;
     gap: 1rem;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Angels - Fire Alert Portal</title>
+    
+    <link rel="stylesheet" href="../styles/map.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-nav">
+                <div class="logo-icon-nav">🔥</div>
+                <div class="logo-text">Vision Angels</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#">Report Fire</a></li>
+                <li><a href="#" class="active">Live Map</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="sign-in.html" class="btn-nav btn-secondary">Sign In</a>
+                <a href="sign-up.html" class="btn-nav btn-primary">Join Now</a>
+            </div>
+            
+            <button class="mobile-toggle">☰</button>
+        </div>
+    </nav>
+
+    <div class="map-container">
+        <div id="map"></div>
+        
+        <div class="map-overlay">
+            <h2>🔥 Live Fire Activity</h2>
+            <div class="fire-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Active Fires</span>
+                    <span class="stat-value" id="activeCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">High Priority</span>
+                    <span class="stat-value" id="highCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Last Updated</span>
+                    <span class="stat-value" id="lastUpdate">--:--</span>
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h3>Fire Severity</h3>
+                <div class="legend-item">
+                    <div class="legend-dot high"></div>
+                    <span>High Risk</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot medium"></div>
+                    <span>Medium Risk</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot low"></div>
+                    <span>Low Risk</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn active" onclick="toggleLayer('all')">All Fires</button>
+            <button class="control-btn" onclick="toggleLayer('high')">High Risk Only</button>
+            <button class="control-btn" onclick="toggleLayer('recent')">Last 24h</button>
+            <button class="control-btn" onclick="refreshData()">🔄 Refresh</button>
+        </div>
+    </div>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <script src='../script/map.js'></script>
+
+</body>
+</html>
