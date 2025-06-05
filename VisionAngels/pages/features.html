@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features | Vision Angels</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/features.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">🔥 Vision Angels</a>
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-nav">
+                <div class="logo-icon-nav">🔥</div>
+                <div class="logo-text">Vision Angels</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="../pages/fire-report.html">Report Fire</a></li>
+                <li><a href="../pages/map.html">Live Map</a></li>
+                <li><a href="../pages/about us.html">About</a></li>
+                <li><a href="../pages/contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="../pages/sign-in.html" class="btn-nav btn-secondary">Sign In</a>
+                <a href="../pages/sign-up.html" class="btn-nav btn-primary">Join Now</a>
+            </div>
+            
+            <button class="mobile-toggle">☰</button>
+        </div>
+    </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+  <h1 class="page-title">FUNCTIONALITIES OF THE SYSTEM/h1>
+  <p class="page-subtitle">
+    This page presents the main features of our application, created as a project for Information Technology. The goal is to develop a functional system for reporting fires and coordinating teams.
+  </p>
+</section>
+
+<section class="features-grid">
+
+  <div class="feature-card">
+    <div class="feature-icon">📍</div>
+    <h3 class="feature-title">Automatic Location Detection</h3>
+    <p class="feature-description">
+      When a report is submitted, the system automatically detects the user's location via GPS or IP geolocation. This is crucial for a quick response from teams, eliminating the need to clarify the address and saving valuable time.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🖼️</div>
+    <h3 class="feature-title">Adding Photos to Reports</h3>
+    <p class="feature-description">
+      Users can attach photos of the fire or the affected area. This allows responders to assess the scale and specifics of the situation before arriving on-site. The feature is implemented using an HTML input of type 'file' and JavaScript for visualization.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">📨</div>
+    <h3 class="feature-title">Sending Notifications</h3>
+    <p class="feature-description">
+      The system includes an automated notification function to alert responsible parties when a new report is submitted. Notifications can be sent via email (SMTP) or, in the future, through a Telegram bot or notification API.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🧭</div>
+    <h3 class="feature-title">Navigation to the Incident Site</h3>
+    <p class="feature-description">
+      Thanks to integration with Google Maps or Leaflet.js, teams can receive direct directions to the incident location. This helps reduce response time and avoid delays.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">💾</div>
+    <h3 class="feature-title">Database Storage</h3>
+    <p class="feature-description">
+      All reports are stored in a database containing critical information—location, date, time, fire type, and status. This is essential for long-term statistics and analysis. The structure used is JSON or a relational database (e.g., SQLite).
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">📊</div>
+    <h3 class="feature-title">Analysis and Statistics</h3>
+    <p class="feature-description">
+      The system includes basic statistics: the number of reports per day, types of fires, and distribution by region. Data can be visualized using charts with Chart.js or SVG elements.
+    </p>
+  </div>
+
+</section>
+
+  </main>
+
+  <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Fire Alert Portal</h3>
+                <p>Protecting communities through early fire detection and rapid response coordination. Together, we can save lives and preserve what matters most.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="../pages/index.html">Home</a></p>
+                <p><a href="../pages/features">Features</a></p>
+                <p><a href="#gallery">Gallery</a></p>
+                <p><a href="../pages/about us.html">About Us</a></p>
+                <p><a href="../pages/contact.html">Contact</a></p>
+                <p><a href="#FAQ">FAQ</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <p><a href="../pages/tips.html">Fire Safety Tips</a></p>
+                <p><a href="#">Emergency Procedures</a></p>
+                <p><a href="#">Support Center</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📧 support@codingburgas.com</p>
+                <p>📞 1-800-FIRE-911</p>
+                <p>🏢 Emergency Response Center</p>
+                <p>📍 Available 24/7 Worldwide</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
