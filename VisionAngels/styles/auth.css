@@ -123,6 +123,7 @@ body::before {
         0 0 40px rgba(255, 69, 0, 0.1);
     position: relative;
     z-index: 2;
+    padding-bottom: 6rem;
 }
 
 .logo {
@@ -246,6 +247,33 @@ body::before {
 
 .password-toggle:hover {
     color: rgba(255, 140, 0, 0.9);
+}
+
+.password-links {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 16px; 
+  font-size: 0.9rem;
+  color: #b89f96; 
+  font-weight: bold;
+}
+
+.password-links a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.password-links a:hover {
+    color:#b89f96; 
+}
+
+.reset-link {
+    margin-right: 1rem;
+}
+
+.change-link {
+    margin-left: 1rem;
 }
 
 .primary-btn {
