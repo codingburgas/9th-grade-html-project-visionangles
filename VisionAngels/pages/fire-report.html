@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Fire - Vision Angels</title>
+    <link rel="stylesheet" href="../styles/fire-report.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-nav">
+                <div class="logo-icon-nav">🔥</div>
+                <div class="logo-text">Vision Angels</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#" class="active">Report Fire</a></li>
+                <li><a href="map.html">Live Map</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="#" class="btn-nav btn-secondary">Sign In</a>
+                <a href="#" class="btn-nav btn-primary">Join Now</a>
+            </div>
+            
+            <button class="mobile-toggle">☰</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">🚨 Report a Fire</h1>
+            <p class="page-subtitle">
+                Help keep your community safe by reporting fire incidents quickly and accurately. 
+                Your report will be immediately forwarded to local emergency services.
+            </p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-section">
+                <h2>🔥 Fire Report Details</h2>
+                
+                <form id="fireReportForm">
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Fire Severity</label>
+                        <div class="severity-options">
+                            <div class="severity-option high">
+                                <input type="radio" id="severityHigh" name="severity" value="high" required>
+                                <label for="severityHigh">🔴 High<br><br><small>Large flames, spreading rapidly</small></label>
+                            </div>
+                            <div class="severity-option medium">
+                                <input type="radio" id="severityMedium" name="severity" value="medium" required>
+                                <label for="severityMedium">🟡 Medium<br><br><small>Moderate flames, contained</small></label>
+                            </div>
+                            <div class="severity-option low">
+                                <input type="radio" id="severityLow" name="severity" value="low" required>
+                                <label for="severityLow">🟢 Low<br><br><small>Small flames,<br> smoldering</small></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-section">
+                        <label class="form-label required">Fire Location</label>
+                        <div class="location-inputs">
+                            <input type="text" id="latitude" class="form-input" placeholder="Latitude" readonly>
+                            <input type="text" id="longitude" class="form-input" placeholder="Longitude" readonly>
+                        </div>
+                        <button type="button" class="location-btn" id="getLocationBtn">📍 Get My Current Location</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="address">Street Address or Description</label>
+                        <input type="text" id="address" class="form-input" placeholder="123 Main St, or nearest landmark" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="description">Fire Description</label>
+                        <textarea id="description" class="form-textarea" placeholder="Describe what you see: size of fire, what's burning, smoke color, wind direction, etc." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Upload Photos/Videos</label>
+                        <div class="file-upload" id="fileUpload">
+                            <input type="file" id="fileInput" multiple accept="image/*,video/*">
+                            <div class="file-upload-text">📸 Click to upload or drag files here</div>
+                            <div class="file-upload-subtext">Images and videos help emergency responders assess the situation</div>
+                        </div>
+                        <div class="uploaded-files" id="uploadedFiles"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="additionalInfo">Additional Information</label>
+                        <textarea id="additionalInfo" class="form-textarea" placeholder="Any other details that might be helpful (people nearby, vehicles involved, etc.)"></textarea>
+                    </div>
+
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn" id="submitBtn">🚨 Submit Fire Report</button>
+                        <button type="button" class="cancel-btn" onclick="clearForm()">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <h3>📋 Reporting Guidelines</h3>
+                
+                <div class="info-item">
+                    <h4>🚨 Emergency Situations</h4>
+                    <p>If this is an active emergency with immediate danger to life or property, call 911 first, then submit this report.</p>
+                </div>
+
+                <div class="info-item">
+                    <h4>📍 Location Accuracy</h4>
+                    <p>Provide the most accurate location possible. Use landmarks if exact addresses aren't available.</p>
+                </div>
+
+                <div class="info-item">
+                    <h4>📸 Photo Guidelines</h4>
+                    <p>Take photos from a safe distance. Include wide shots showing the overall scene and close-ups of specific details.</p>
+                </div>
+
+                <div class="info-item">
+                    <h4>⏰ Report Timing</h4>
+                    <p>Submit reports as soon as it's safe to do so. Time-sensitive information helps emergency responders.</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>🆘 Emergency Contacts</h4>
+                    <p><strong>Fire Emergency:</strong> 911</p>
+                    <p><strong>Non-Emergency:</strong> (555) 123-4567</p>
+                    <p><strong>Report Status:</strong> support@firealert.com</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let uploadedFiles = [];
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Get current location
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            const btn = this;
+            btn.disabled = true;
+            btn.textContent = '📍 Getting Location...';
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        document.getElementById('latitude').value = position.coords.latitude.toFixed(6);
+                        document.getElementById('longitude').value = position.coords.longitude.toFixed(6);
+                        btn.textContent = '✅ Location Obtained';
+                        btn.style.background = 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)';
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.textContent = '📍 Get My Current Location';
+                            btn.style.background = 'linear-gradient(135deg, #ff4500 0%, #dc143c 100%)';
+                        }, 2000);
+                    },
+                    function(error) {
+                        btn.disabled = false;
+                        btn.textContent = '❌ Location Failed';
+                        btn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                        setTimeout(() => {
+                            btn.textContent = '📍 Get My Current Location';
+                            btn.style.background = 'linear-gradient(135deg, #ff4500 0%, #dc143c 100%)';
+                        }, 2000);
+                        alert('Unable to get location. Please enter address manually.');
+                    }
+                );
+            } else {
+                btn.disabled = false;
+                btn.textContent = '❌ Not Supported';
+                alert('Geolocation is not supported by this browser.');
+            }
+        });
+
+        // File upload handling
+        const fileUpload = document.getElementById('fileUpload');
+        const fileInput = document.getElementById('fileInput');
+        const uploadedFilesDiv = document.getElementById('uploadedFiles');
+
+        fileUpload.addEventListener('click', () => fileInput.click());
+        fileUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUpload.classList.add('dragover');
+        });
+        fileUpload.addEventListener('dragleave', () => {
+            fileUpload.classList.remove('dragover');
+        });
+        fileUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUpload.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
+                    uploadedFiles.push(file);
+                    displayUploadedFile(file);
+                }
+            });
+        }
+
+        function displayUploadedFile(file) {
+            const fileDiv = document.createElement('div');
+            fileDiv.className = 'uploaded-file';
+            fileDiv.innerHTML = `
+                <span>📎 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                <button type="button" class="file-remove" onclick="removeFile('${file.name}')">Remove</button>
+            `;
+            uploadedFilesDiv.appendChild(fileDiv);
+        }
+
+        function removeFile(fileName) {
+            uploadedFiles = uploadedFiles.filter(file => file.name !== fileName);
+            const fileElements = uploadedFilesDiv.children;
+            for (let i = 0; i < fileElements.length; i++) {
+                if (fileElements[i].textContent.includes(fileName)) {
+                    fileElements[i].remove();
+                    break;
+                }
+            }
+        }
+
+        // Form submission
+        document.getElementById('fireReportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '📤 Submitting Report...';
+
+            // Simulate form submission
+            setTimeout(() => {
+                alert('🚨 Fire report submitted successfully!\n\nReport ID: FR-' + Date.now() + '\n\nEmergency services have been notified. You will receive a confirmation email shortly.');
+                
+                // Reset form
+                clearForm();
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚨 Submit Fire Report';
+            }, 2000);
+        });
+
+        // Clear form function
+        function clearForm() {
+            document.getElementById('fireReportForm').reset();
+            document.getElementById('latitude').value = '';
+            document.getElementById('longitude').value = '';
+            uploadedFiles = [];
+            uploadedFilesDiv.innerHTML = '';
+            
+            // Reset location button
+            const locationBtn = document.getElementById('getLocationBtn');
+            locationBtn.disabled = false;
+            locationBtn.textContent = '📍 Get My Current Location';
+            locationBtn.style.background = 'linear-gradient(135deg, #ff4500 0%, #dc143c 100%)';
+        }
+
+        // Phone number formatting
+        document.getElementById('reporterPhone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 6) {
+                value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{3})(\d{0,3})/, '($1) $2');
+            }
+            e.target.value = value;
+        });
+
+        // Auto-resize textareas
+        document.querySelectorAll('.form-textarea').forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        });
+
+        // Form validation feedback
+        document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 10px rgba(239, 68, 68, 0.3)';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
