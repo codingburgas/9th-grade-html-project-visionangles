@@ -424,6 +424,15 @@ body::before {
     margin-bottom: 0.5rem;
 }
 
+.preview-image {
+  height: 100px;
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.4), 0 0 60px rgba(255, 99, 71, 0.3);
+}
+
 .file-remove {
     background: #ff4444;
     color: white;

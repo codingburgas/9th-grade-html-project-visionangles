@@ -1,132 +1,125 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGFrYW5jaG5kciIsImEiOiJjbTVubWZ5ZjIwOTJkMnFzaWZyYnJ6Z2plIn0.MGmgQ6xd_3LJwGv3nWPgNA';
+import { db } from "../data/firebase-config.js";
+import { collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js";
+import { getDocs } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js";
 
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v11',
-        center: [25.4858, 42.7339], // Center of Bulgaria
-        zoom: 6
-    });
 
-    const fireData = [
-        {
-            id: 1,
-            coords: [23.3219, 42.6977], // Sofia
-            severity: 'high',
-            description: 'Large forest fire near Vitosha Mountain',
-            time: '2025-05-26T10:00:00Z'
-        },
-        {
-            id: 2,
-            coords: [27.4678, 42.5048], // Burgas
-            severity: 'medium',
-            description: 'Field fire near Burgas',
-            time: '2025-05-26T07:30:00Z'
-        },
-        {
-            id: 3,
-            coords: [25.6172, 43.1355], // Veliko Tarnovo
-            severity: 'low',
-            description: 'Controlled burn area',
-            time: '2025-05-25T15:45:00Z'
-        }
-    ];
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGFrYW5jaG5kciIsImEiOiJjbTVubWZ5ZjIwOTJkMnFzaWZyYnJ6Z2plIn0.MGmgQ6xd_3LJwGv3nWPgNA'; // Replace with your actual token
 
-    let markers = [];
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v11',
+  center: [25.4858, 42.7339], // Default center (Bulgaria)
+  zoom: 6
+});
 
-    function createPopupContent(fire) {
-        return `
-            <div class="popup-header">
-                <span class="popup-severity ${fire.severity}">${fire.severity.toUpperCase()}</span>
-            </div>
-            <div class="popup-details">
-                <div class="popup-detail-item">
-                    <span class="popup-detail-label">Location:</span> ${fire.coords[1].toFixed(3)}, ${fire.coords[0].toFixed(3)}
-                </div>
-                <div class="popup-detail-item">
-                    <span class="popup-detail-label">Description:</span> ${fire.description}
-                </div>
-                <div class="popup-detail-item">
-                    <span class="popup-detail-label">Reported:</span> ${new Date(fire.time).toLocaleString()}
-                </div>
-            </div>
-        `;
-    }
+let markers = [];
+let fireData = [];
 
-    function getColorBySeverity(severity) {
-        switch (severity) {
-            case 'high': return '#ef4444';
-            case 'medium': return '#fb923c';
-            case 'low': return '#4ade80';
-            default: return '#ffffff';
-        }
-    }
+function createPopupContent(fire) {
+  return `
+    <div class="popup-content">
+      <h3>Fire Report</h3>
+      <p><strong>Severity:</strong> ${fire.severity}</p>
+      <p><strong>Address:</strong> ${fire.address}</p>
+      <p><strong>Description:</strong> ${fire.description}</p>
+      <p><strong>Reported:</strong> ${fire.timestamp?.toDate().toLocaleString() ?? 'Unknown'}</p>
+    </div>
+  `;
+}
 
-    function renderMarkers(filteredFires) {
-        // Remove old markers
-        markers.forEach(marker => marker.remove());
-        markers = [];
+function getColorBySeverity(severity) {
+  switch (severity) {
+    case 'low': return 'green';
+    case 'medium': return 'orange';
+    case 'high': return 'red';
+    default: return 'gray';
+  }
+}
 
-        let highCount = 0;
+function renderMarkers(fires) {
+  // Remove old markers
+  markers.forEach(marker => marker.remove());
+  markers = [];
 
-        filteredFires.forEach(fire => {
-            if (fire.severity === 'high') highCount++;
+  // Add new markers
+  fires.forEach(fire => {
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundColor = getColorBySeverity(fire.severity);
+    el.style.width = '16px';
+    el.style.height = '16px';
+    el.style.borderRadius = '50%';
+    el.style.border = '2px solid white';
 
-            const el = document.createElement('div');
-            el.className = 'marker';
-            el.style.backgroundColor = getColorBySeverity(fire.severity);
-            el.style.width = '16px';
-            el.style.height = '16px';
-            el.style.borderRadius = '50%';
-            el.style.border = '2px solid white';
+    const marker = new mapboxgl.Marker(el)
+      .setLngLat(fire.coords)
+      .setPopup(new mapboxgl.Popup().setHTML(createPopupContent(fire)))
+      .addTo(map);
 
-            const marker = new mapboxgl.Marker(el)
-                .setLngLat(fire.coords)
-                .setPopup(new mapboxgl.Popup().setHTML(createPopupContent(fire)))
-                .addTo(map);
+    markers.push(marker);
+  });
 
-            markers.push(marker);
-        });
+  // Update dashboard stats
+  document.getElementById('activeCount').textContent = fires.length;
+  document.getElementById('highCount').textContent = fires.filter(f => f.severity === 'high').length;
+  document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+}
 
-        // Update stats
-        document.getElementById('activeCount').textContent = filteredFires.length;
-        document.getElementById('highCount').textContent = highCount;
-        document.getElementById('lastUpdate').textContent =  new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});;
-    }
+async function fetchLatestFires() {
+  const firesCollection = collection(db, "fires");
+  const snapshot = await getDocs(firesCollection);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
 
-    function toggleLayer(type) {
-        const buttons = document.querySelectorAll('.control-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
+async function toggleLayer(type) {
+  fireData = await fetchLatestFires();
 
-        switch (type) {
-            case 'all':
-                renderMarkers(fireData);
-                buttons[0].classList.add('active');
-                break;
-            case 'high':
-                renderMarkers(fireData.filter(f => f.severity === 'high'));
-                buttons[1].classList.add('active');
-                break;
-            case 'recent':
-                const now = new Date();
-                const recentFires = fireData.filter(f => {
-                    const reportedTime = new Date(f.time);
-                    const diffHours = (now - reportedTime) / (1000 * 60 * 60);
-                    return diffHours <= 24;
-                });
-                renderMarkers(recentFires);
-                buttons[2].classList.add('active');
-                break;
-        }
-    }
+  const buttons = document.querySelectorAll('.control-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
 
-    function refreshData() {
-        toggleLayer('all');
-        const refreshBtn = document.querySelector('.control-btn:last-child');
-        refreshBtn.classList.add('active');
-        setTimeout(() => refreshBtn.classList.remove('active'), 500);
-    }
+  switch (type) {
+    case 'all':
+      renderMarkers(fireData);
+      buttons[0].classList.add('active');
+      break;
+    case 'high':
+      renderMarkers(fireData.filter(f => f.severity === 'high'));
+      buttons[1].classList.add('active');
+      break;
+    case 'recent':
+      const now = new Date();
+      const recentFires = fireData.filter(f => {
+        const reportedTime = new Date(f.timestamp?.toDate() ?? f.time); // Adjusted for timestamp type
+        const diffHours = (now - reportedTime) / (1000 * 60 * 60);
+        return diffHours <= 24;
+      });
+      renderMarkers(recentFires);
+      buttons[2].classList.add('active');
+      break;
+  }
+}
 
-    // Initialize map with all fires
-    map.on('load', () => {
-        toggleLayer('all');
-    });
+function refreshData() {
+  toggleLayer('all');
+  const refreshBtn = document.querySelector('.control-btn:last-child');
+  refreshBtn.classList.add('active');
+  setTimeout(() => refreshBtn.classList.remove('active'), 500);
+}
+
+function setupControls() {
+  document.querySelector('.all-btn').addEventListener('click', () => toggleLayer('all'));
+  document.querySelector('.high-btn').addEventListener('click', () => toggleLayer('high'));
+  document.querySelector('.recent-btn').addEventListener('click', () => toggleLayer('recent'));
+  document.querySelector('.refresh-btn').addEventListener('click', () => refreshData());
+}
+
+map.on('load', () => {
+  // Listen for real-time updates initially and store data
+  const firesCollection = collection(db, "fires");
+  onSnapshot(firesCollection, snapshot => {
+    fireData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderMarkers(fireData);
+  });
+  
+  setupControls();
+});

@@ -71,15 +71,17 @@
         </div>
 
         <div class="controls">
-            <button class="control-btn active" onclick="toggleLayer('all')">All Fires</button>
-            <button class="control-btn" onclick="toggleLayer('high')">High Risk Only</button>
-            <button class="control-btn" onclick="toggleLayer('recent')">Last 24h</button>
-            <button class="control-btn" onclick="refreshData()">🔄 Refresh</button>
+            <button class="control-btn all-btn active">All Fires</button>
+            <button class="control-btn high-btn">High Risk Only</button>
+            <button class="control-btn recent-btn">Last 24h</button>
+            <button class="control-btn refresh-btn">🔄 Refresh</button>
         </div>
+
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-    <script src='../script/map.js'></script>
+    <script type="module" src="../script/map.js"></script>
+
 
 </body>
 </html>
