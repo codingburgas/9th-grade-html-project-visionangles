@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show/hide region selector based on role
     roleSelect.addEventListener('change', () => {
-        if (roleSelect.value === 'volunteer') {  // Firefighter role is 'volunteer' as per your HTML
+        if (roleSelect.value === 'firefighter') {
             regionGroup.style.display = 'block';
             regionGroup.querySelector('select').setAttribute('required', 'required');
         } else {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Get region if role is firefighter
                 let region = null;
-                if (role === 'volunteer') {
+                if (role === 'firefighter') {
                     region = document.getElementById('region').value;
                 }
 

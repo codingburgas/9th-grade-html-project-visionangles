@@ -89,7 +89,7 @@ function renderMarkers(fires) {
 
   document.getElementById('activeCount').textContent = fires.length;
   document.getElementById('highCount').textContent = fires.filter(f => f.severity === 'high').length;
-  document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+  document.getElementById('lastUpdate').textContent = new Date().toTimeString().slice(0, 9);
 }
 
 async function fetchLatestFires() {

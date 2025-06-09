@@ -1,3 +1,4 @@
+
 .hero-image {
   position: relative;
   width: 100%;
@@ -22,7 +23,7 @@
 .hero-text {
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: var(--text-primary);
   text-align: center;
   top: 60%;
   transform: translateY(-50%);
@@ -31,7 +32,7 @@
 
 .hero-text h1 {
   font-size: 3rem;
-  color: orange;
+  color: var(--accent-primary);
   margin-bottom: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -41,7 +42,7 @@
   max-width: 600px;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .features {
@@ -60,9 +61,9 @@
 }
 
 .feature-card {
-    background: #EFD5C3;
+    background: var(--bg-secondary);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 69, 0, 0.2);
+    border: 1px solid var(--border-primary);
     border-radius: 20px;
     padding: 1rem;
     transition: all 0.3s ease;
@@ -70,8 +71,8 @@
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 69, 0, 0.2);
-    border-color: rgba(255, 69, 0, 0.4);
+    box-shadow: 0 20px 40px var(--glow-primary);
+    border-color: var(--border-secondary);
 }
 
 .feature-icon {
@@ -82,43 +83,76 @@
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    margin: 0 auto 1.5rem auto;;
-    
+    margin: 0 auto 1.5rem auto;
 }
 
 .feature-title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #1a0f0f;
+    color: var(--text-primary);
     text-align: center;
 }
 
 .feature-description {
-    color: #1a0f0f;
+    color: var(--text-secondary);
     line-height: 1.6;
     text-align: center;
 }
 
 .feature-info{
-    color:#1a0f0f;
+    color: var(--text-secondary);
     line-height: 1.6;
     padding: 5px;
     text-align: center;
 }
 
 @media (max-width: 768px) {
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-    }
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-    .btn-hero {
-        width: 100%;
-        max-width: 300px;
-    }
+  .search-container {
+    min-width: 100%;
+  }
 
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
+  #exportBtn {
+    min-width: 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 12px 8px;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-hero {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
 }

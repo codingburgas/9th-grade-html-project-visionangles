@@ -1,158 +1,141 @@
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 25%, #3d1a1a 50%, #4a1c1c 75%, #5c1f1f 100%);
-    background-attachment: fixed;
-    color: #fff;
-    overflow-x: hidden;
-    padding-top: 80px;
-    position: relative;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+   background: var(--gradient-main);
+   background-attachment: fixed;
+   color: var(--text-primary);
+   overflow-x: hidden;
+   padding-top: 80px;
+   position: relative;
 }
-
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #ff6347 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: glow-text 3s ease-in-out infinite alternate;
-    text-align: center;
+   font-size: clamp(2.5rem, 5vw, 4rem);
+   font-weight: 800;
+   margin-bottom: 1.5rem;
+   background: var(--gradient-accent);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text;
+   animation: glow-text 3s ease-in-out infinite alternate;
+   text-align: center;
 }
-
 .hero-content {
-    font-size: 1.2rem;
-    text-align: center;
+   font-size: 1.2rem;
+   text-align: center;
 }
-
 .tips {
-    padding: 4rem 2rem;
-    backdrop-filter: blur(10px);  
- }
-
+   padding: 4rem 2rem;
+   backdrop-filter: blur(10px);  
+}
 .tips-container {
-    max-width: 1900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    border: none;
-    background: transparent;
-    background-color: rgba(0, 0, 0, 0);
+   max-width: 1900px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 4rem;
+   text-align: center;
+   backdrop-filter: blur(10px);
+   border: none;
+   background: transparent;
+   background-color: rgba(0, 0, 0, 0);
 }
-
 .tips-item {
-    background:#4a1c1c;
-    border-radius: 1rem;
-    padding: 2rem;
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(6px);
+   background: var(--bg-quaternary);
+   border-radius: 1rem;
+   padding: 2rem;
+   transition: all 0.3s ease-in-out;
+   backdrop-filter: blur(6px);
 }
-
 .tips-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.2);
- 
+   transform: translateY(-5px);
+   box-shadow: 0 10px 30px var(--glow-primary);
+
 }
 .tip-image
 {
-   text-align: center;
-   font-size: 48px;
+  text-align: center;
+  font-size: 48px;
 }
 .tips-title {
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: #ff6347;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+   font-size: 1.9rem;
+   font-weight: 800;
+   color: var(--accent-tomato);
+   margin-bottom: 0.5rem;
+   text-shadow: 0 0 10px var(--glow-secondary);
 }
-
 .tips-content {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
+   font-size: 1rem;
+   color: var(--text-secondary);
+   font-weight: 500;
 }
-
 .react-container {
-    max-width: 700px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
-    justify-content: center;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    background: transparent;
-    padding-bottom: 10px;
+   max-width: 700px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 4rem;
+   justify-content: center;
+   text-align: center;
+   backdrop-filter: blur(10px);
+   background: transparent;
+   padding-bottom: 10px;
 }
-
 .react-item{
-    background:#4a1c1c;
-    border-radius: 1rem;
-    padding: 2rem;
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(6px);
+   background: var(--bg-quaternary);
+   border-radius: 1rem;
+   padding: 2rem;
+   transition: all 0.3s ease-in-out;
+   backdrop-filter: blur(6px);
 }
-
 h2, h3 {
-  text-align: center;
-  margin-bottom: 20px;
+ text-align: center;
+ margin-bottom: 20px;
 }
-
 .chart-container-bar{
-  background: transparent;
-  padding: 20px 0;
-  width: 50%;
-  max-width: 600px;
-  margin: 10 auto 40px;
+ background: transparent;
+ padding: 20px 0;
+ width: 50%;
+ max-width: 600px;
+ margin: 10 auto 40px;
 }
 .chart-container-pie{
-  background: transparent;
-  padding: 20px 0;
-  width: 50%;
-  max-width: 400px;
-  margin: 10 auto 40px;
+ background: transparent;
+ padding: 20px 0;
+ width: 50%;
+ max-width: 400px;
+ margin: 10 auto 40px;
 }
 .chart-container canvas {
-  width: 100% !important;
-  height: 400px !important; 
-  display: block;
-  margin: 0 auto;
-  border-radius: 12px;
-  background: transparent !important;
+ width: 100% !important;
+ height: 400px !important;
+ display: block;
+ margin: 0 auto;
+ border-radius: 12px;
+ background: transparent !important;
 }
-
 .description {
-  color: white;
-  max-width: 500px;
-  margin: 10px auto 30px;
-  font-style: italic;
-  text-align: center;
-  
-}
+ color: var(--text-primary);
+ max-width: 500px;
+ margin: 10px auto 30px;
+ font-style: italic;
+ text-align: center;
 
+}
 .charts-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px; 
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 40px;
 }
-
 @media (max-width: 768px) {
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn-hero {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
+   .hero-cta {
+       flex-direction: column;
+       align-items: center;
+   }
+   .btn-hero {
+       width: 100%;
+       max-width: 300px;
+   }
+   .gallery-grid {
+       grid-template-columns: 1fr;
+   }
 }

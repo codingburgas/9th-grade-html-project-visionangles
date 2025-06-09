@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at center, #2e0d0d, #1b0a0a);
-    color: #fff;
+    background: radial-gradient(circle at center, var(--bg-secondary), var(--bg-primary));
+    color: var(--text-primary);
     margin: 0;
     padding-top: 100px;
     overflow-x: hidden;
@@ -17,14 +17,14 @@ body {
 .page-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #ff4c4c;
+    color: var(--accent-primary);
     margin-bottom: 0.5rem;
     text-align: center;
 }
 
 .page-subtitle {
     font-size: 1.1rem;
-    color: #ddd;
+    color: var(--text-secondary);
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -39,17 +39,17 @@ body {
 }
 
 .feature-card {
-    background-color: #2e1313;
-    border: 1px solid #3a1c1c;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-primary) ;
     border-radius: 16px;
     padding: 1.8rem 1.4rem;
-    box-shadow: 0 6px 16px rgba(255, 70, 0, 0.2);
+    box-shadow: 0 6px 16px var(--glow-primary);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(255, 99, 71, 0.3);
+    box-shadow: 0 12px 25px var(--glow-secondary);
 }
 
 .feature-icon {
@@ -63,13 +63,13 @@ body {
     text-align: center;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ffa552;
+    color: var(--accent-secondary);
     margin-bottom: 0.75rem;
 }
 
 .feature-description {
     font-size: 1rem;
-    color: #f0f0f0;
+    color: var(--text-secondary);
     line-height: 1.6;
     text-align: center;
 }
@@ -83,7 +83,7 @@ body {
 .feature-description li {
     margin-bottom: 0.4rem;
     list-style-type: disc;
-    color: #ffd9b3;
+     color: var(--text-tertiary);
 }
 
 @media (max-width: 768px) {

@@ -15,7 +15,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #ff6347 100%);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -23,25 +23,25 @@
 
 .page-subtitle {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
 .emergency-banner {
-    background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
+    background: var(--gradient-accent);
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 2rem;
-    border: 1px solid rgba(255, 69, 0, 0.3);
+    border: 1px solid var(--border-tertiary);
     text-align: center;
     animation: pulse-glow 3s ease-in-out infinite alternate;
 }
 
 @keyframes pulse-glow {
-    0% { box-shadow: 0 0 10px rgba(220, 20, 60, 0.3); }
-    100% { box-shadow: 0 0 25px rgba(220, 20, 60, 0.6); }
+    0% { box-shadow: 0 0 10px var(--glow-primary); }
+    100% { box-shadow: 0 0 25px var(--glow-secondary); }
 }
 
 .emergency-text {
@@ -63,15 +63,15 @@
 }
 
 .form-section {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--overlay-medium);
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-primary);
 }
 
 .form-section h2 {
-    color: #ff8c42;
+    color: var(--accent-secondary);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     display: flex;
@@ -87,12 +87,12 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
 }
 
 .form-label.required::after {
     content: ' *';
-    color: #ff4444;
+    color: var(--accent-secondary);
 }
 
 .form-input,
@@ -100,10 +100,10 @@
 .form-textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-secondary);
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.3);
-    color: #fff;
+    background: var(--overlay-light);
+    color: var(--text-primary);
     font-size: 1rem;
     transition: all 0.3s ease;
 }
@@ -112,8 +112,8 @@
 .form-select:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #ff6347;
-    box-shadow: 0 0 10px rgba(255, 99, 71, 0.3);
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 10px var(--glow-tertiary);
 }
 
 .form-textarea {
@@ -122,7 +122,7 @@
 }
 
 .form-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
 }
 
 .severity-options {
@@ -145,7 +145,7 @@
     display: block;
     padding: 1rem;
     text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--border-secondary);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -153,20 +153,20 @@
 }
 
 .severity-option input[type="radio"]:checked + label {
-    border-color: #ff6347;
-    background: rgba(255, 99, 71, 0.1);
+    border-color: var(--accent-secondary);
+    background: var(--overlay-light);
 }
 
 .severity-option.high label {
-    color: #ff4444;
+    color: var(--accent-secondary);
 }
 
 .severity-option.medium label {
-    color: #fb923c;
+    color: var(--accent-primary);
 }
 
 .severity-option.low label {
-    color: #4ade80;
+    color: var(--accent-tomato);
 }
 
 .location-section {
@@ -183,8 +183,8 @@
 .location-btn {
     width: 100%;
     padding: 0.75rem;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 100%);
-    color: #fff;
+    background: var(--gradient-accent);
+    color: var(--text-primary);
     border: none;
     border-radius: 8px;
     font-weight: 600;
@@ -194,7 +194,7 @@
 
 .location-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.3);
+    box-shadow: 0 8px 25px var(--glow-tertiary);
 }
 
 .location-btn:disabled {
@@ -204,7 +204,7 @@
 }
 
 .file-upload {
-    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border: 2px dashed var(--border-tertiary);
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
@@ -213,13 +213,13 @@
 }
 
 .file-upload:hover {
-    border-color: #ff6347;
-    background: rgba(255, 99, 71, 0.05);
+    border-color: var(--accent-secondary);
+    background: var(--overlay-light);
 }
 
 .file-upload.dragover {
-    border-color: #ff6347;
-    background: rgba(255, 99, 71, 0.1);
+    border-color: var(--accent-secondary);
+    background: var(--overlay-medium);
 }
 
 .file-upload input[type="file"] {
@@ -245,7 +245,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     border-radius: 6px;
     margin-bottom: 0.5rem;
 }
@@ -256,12 +256,12 @@
   margin-top: 8px;
   margin-bottom: 8px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255, 69, 0, 0.4), 0 0 60px rgba(255, 99, 71, 0.3);
+  box-shadow: 0 0 15px var(--glow-tertiary), 0 0 60px var(--glow-tertiary);
 }
 
 .file-remove {
-    background: #ff4444;
-    color: white;
+    background: var(--accent-secondary);
+    color: var(--text-primary);
     border: none;
     border-radius: 4px;
     padding: 0.25rem 0.5rem;
@@ -280,8 +280,8 @@
     padding: 1rem 3rem;
     font-size: 1.1rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 100%);
-    color: #fff;
+    background: var(--gradient-accent);
+    color: var(--text-primary);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -291,7 +291,7 @@
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(255, 69, 0, 0.4);
+    box-shadow: 0 12px 35px var(--glow-tertiary);
 }
 
 .submit-btn:disabled {
@@ -305,29 +305,29 @@
     font-size: 1rem;
     font-weight: 600;
     background: transparent;
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-tertiary);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .cancel-btn:hover {
-    color: #fff;
-    border-color: #fff;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
 }
 
 .info-panel {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--overlay-medium);
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-primary);
     height: fit-content;
 }
 
 .info-panel h3 {
-    color: #ff8c42;
+    color: var(--accent-secondary);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -335,14 +335,14 @@
 .info-item {
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     border-radius: 8px;
-    border-left: 3px solid #ff6347;
+    border-left: 3px solid var(--accent-secondary);
 }
 
 .info-item h4 {
     margin-bottom: 0.5rem;
-    color: #ffcccc;
+    color: var(--text-tertiary);
 }
 
 .info-item p {
@@ -352,15 +352,15 @@
 }
 
 .contact-info {
-    background: rgba(220, 20, 60, 0.1);
-    border: 1px solid rgba(220, 20, 60, 0.3);
+    background: var(--overlay-light);
+    border: 1px solid var(--border-tertiary);
     padding: 1.5rem;
     border-radius: 8px;
     margin-top: 1.5rem;
 }
 
 .contact-info h4 {
-    color: #ff6b6b;
+    color: var(--accent-tomato);
     margin-bottom: 0.5rem;
 }
 

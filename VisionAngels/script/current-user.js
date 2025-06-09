@@ -74,19 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         } else {
-            navCta.innerHTML = `
-                <a href="/pages/sign-in.html" class="btn-nav btn-secondary" style="opacity: 0; transform: translateX(10px);">Sign In</a>
-                <a href="/pages/sign-in.html" class="btn-nav btn-primary" style="opacity: 0; transform: translateX(10px);">Join Now</a>
-            `;
-            
-            const buttons = navCta.querySelectorAll('.btn-nav');
-            buttons.forEach((btn, index) => {
-                btn.style.transition = 'all 0.4s ease';
-                setTimeout(() => {
-                    btn.style.opacity = '1';
-                    btn.style.transform = 'translateX(0)';
-                }, index * 100);
-            });
+            // Redirect to sign-in if not authenticated
+            window.location.href = '/pages/sign-in.html';
         }
     });
 });

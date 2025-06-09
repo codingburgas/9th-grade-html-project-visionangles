@@ -1,14 +1,15 @@
+
 .hero-text {
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: var(--text-primary);
   text-align: center;
   padding: 5rem 2rem 3rem;
 }
 
 .hero-text h1 {
   font-size: 3rem;
-  color: orange;
+  color: var(--accent-primary);
   margin-bottom: 1rem;
 }
 
@@ -16,16 +17,16 @@
   font-size: 1.2rem;
   max-width: 1400px;
   margin: 0 auto;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .team-info {
   width: 90%;
   padding: 2rem 4rem;
   margin: 1rem auto;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--overlay-light);
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(255, 69, 0, 0.15);
+  box-shadow: 0 8px 30px var(--glow-tertiary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,14 +36,14 @@
 
 .team-description h2 {
   font-size: 2rem;
-  color: #ffa500;
+  color: var(--accent-primary);
   margin-bottom: 1rem;
 }
 
 .team-description p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #eee;
+  color: var(--text-tertiary);
   max-width: 800px;
 }
 
@@ -53,7 +54,7 @@
 
 .truck-features-vertical h3 {
   font-size: 1.5rem;
-  color: #ff6347;
+  color: var(--accent-secondary);
   margin-bottom: 1rem;
 }
 
@@ -81,9 +82,9 @@
   width: 90%;
   margin: 2rem auto;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--overlay-light);
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(255, 69, 0, 0.15);
+  box-shadow: 0 8px 30px var(--glow-tertiary);
   text-align: center;
 }
 
@@ -93,7 +94,7 @@
 
 .equipment-container h3 {
   font-size: 1.8rem;
-  color: #ff6347;
+  color: var(--accent-secondary);
   margin-bottom: 2rem;
 }
 
@@ -104,10 +105,10 @@
 }
 
 .equipment-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--overlay-light);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.1);
+  box-shadow: 0 4px 15px var(--glow-primary);
   transition: transform 0.3s ease;
 }
 
@@ -117,13 +118,13 @@
 
 .equipment-item h4 {
   font-size: 1.2rem;
-  color: #ffa500;
+  color: var(--accent-primary);
   margin-bottom: 0.5rem;
 }
 
 .equipment-item p {
   font-size: 1rem;
-  color: #eee;
+  color: var(--text-tertiary);
   line-height: 1.5;
 }
 

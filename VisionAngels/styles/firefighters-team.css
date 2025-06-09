@@ -3,7 +3,7 @@
   font-weight: 800;
   margin-bottom: 0.5rem;
   margin-top: 90px;
-  background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #ff6347 100%);
+  background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -28,7 +28,7 @@
 }
 
 .team-item {
-    background:#4a1c1c;
+    background: var(--bg-quaternary);
     border-radius: 1rem;
     padding: 2rem;
     transition: all 0.3s ease-in-out;
@@ -39,7 +39,7 @@
 
 .team-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.2);
+    box-shadow: 0 10px 30px var(--glow-primary);
 }
  
 .team-image img {
@@ -48,17 +48,18 @@
   object-fit: contain;         
   border-radius: 4px;          
 }
+
 .team-title {
     font-size: 1.9rem;
     font-weight: 800;
-    color: #ff6347;
+    color: var(--accent-secondary);
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+    text-shadow: 0 0 10px var(--glow-secondary);
 }
 
 .team-content {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -77,16 +78,13 @@
   height: 40px;
   border-radius: 6px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.info-button {
-  background: linear-gradient(to right, #ffa500, #ff4500);
+  background: var(--gradient-accent);
 }
 
 .info-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+  box-shadow: 0 0 10px var(--glow-primary);
 }

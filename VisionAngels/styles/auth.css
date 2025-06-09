@@ -6,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 25%, #3d1a1a 50%, #4a1c1c 75%, #5c1f1f 100%);
+    background: var(--gradient-main);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -23,10 +23,10 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 80%, rgba(255, 69, 0, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, var(--glow-tertiary) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(220, 20, 60, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 60% 70%, rgba(255, 99, 71, 0.2) 0%, transparent 50%);
+        radial-gradient(circle at 60% 70%, var(--glow-secondary) 0%, transparent 50%);
     animation: flicker 4s ease-in-out infinite alternate;
 }
 
@@ -45,7 +45,7 @@ body::before {
     position: absolute;
     width: 3px;
     height: 3px;
-    background: radial-gradient(circle, #ff4500 0%, #ff6347 40%, transparent 70%);
+    background: radial-gradient(circle, var(--particle-primary) 0%, var(--particle-secondary) 40%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     animation: float-up linear infinite;
@@ -54,7 +54,7 @@ body::before {
 .particle.large {
     width: 5px;
     height: 5px;
-    background: radial-gradient(circle, #ff1493 0%, #ff4500 30%, #ff6347 60%, transparent 80%);
+    background: radial-gradient(circle, #ff1493 0%, var(--particle-primary) 30%, var(--particle-secondary) 60%, transparent 80%);
 }
 
 .particle.small {
@@ -110,9 +110,9 @@ body::before {
 }
 
 .container {
-    background: rgba(139, 0, 0, 0.1);
+    background: var(--overlay-medium);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 69, 0, 0.2);
+    border: 1px solid var(--border-secondary);
     border-radius: 20px;
     padding: 40px;
     width: 550px;
@@ -120,7 +120,7 @@ body::before {
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 99, 71, 0.1),
-        0 0 40px rgba(255, 69, 0, 0.1);
+        0 0 40px var(--glow-primary);
     position: relative;
     z-index: 2;
     padding-bottom: 6rem;
@@ -134,7 +134,7 @@ body::before {
 .logo-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #8b0000 100%);
+    background: var(--gradient-accent);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -142,7 +142,7 @@ body::before {
     margin: 0 auto 16px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    box-shadow: 0 4px 15px var(--glow-primary);
 }
 
 .logo-icon::before {
@@ -174,7 +174,7 @@ body::before {
 }
 
 .logo h1 {
-    color: white;
+    color: var(--text-primary);
     font-size: 24px;
     font-weight: 600;
     margin: 0;
@@ -199,17 +199,17 @@ body::before {
 .form-group input, .form-group select {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(139, 0, 0, 0.08);
-    border: 1px solid rgba(255, 69, 0, 0.2);
+    background: var(--overlay-light);
+    border: 1px solid var(--border-secondary);
     border-radius: 12px;
-    color: #fff;
+    color: var(--text-primary);
     font-size: 16px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
 }
 
 .form-group input::placeholder {
-    color: rgba(255, 160, 122, 0.7);
+    color: var(--placeholder);
 }
 
 .form-group select {
@@ -217,14 +217,14 @@ body::before {
 }
 
 .form-group select option {
-    background: #2d1b1b;
-    color: #fff;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .form-group input:focus, .form-group select:focus {
     outline: none;
-    border-color: rgba(255, 69, 0, 0.6);
-    background: rgba(139, 0, 0, 0.12);
+    border-color: var(--border-tertiary);
+    background: var(--overlay-medium);
     box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.15);
 }
 
@@ -239,7 +239,7 @@ body::before {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     cursor: pointer;
     font-size: 18px;
     transition: color 0.3s ease;
@@ -250,22 +250,24 @@ body::before {
 }
 
 .password-links {
-  display: flex;
-  justify-content: center; 
-  margin-bottom: 16px; 
-  font-size: 0.9rem;
-  color: #b89f96; 
-  font-weight: bold;
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 16px; 
+    font-size: 0.9rem;
+    color: #b89f96; 
+    font-weight: bold;
 }
 
 .password-links a {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    color: var(--placeholder);
+    transition: color 0.3s ease;
 }
 
 .password-links a:hover {
-    color:#b89f96; 
+    color: var(--accent-crimson); 
 }
 
 .reset-link {
@@ -279,10 +281,10 @@ body::before {
 .primary-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #8b0000 100%);
+    background: var(--gradient-accent);
     border: none;
     border-radius: 12px;
-    color: white;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -290,13 +292,13 @@ body::before {
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    box-shadow: 0 4px 15px var(--glow-primary);
 }
 
 .primary-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
-    background: linear-gradient(135deg, #ff6347 0%, #ff1493 50%, #8b0000 100%);
+    box-shadow: 0 8px 25px var(--glow-tertiary);
+    background: linear-gradient(135deg, var(--accent-tomato) 0%, #ff1493 50%, var(--accent-quaternary) 100%);
 }
 
 .primary-btn:active {
@@ -307,7 +309,7 @@ body::before {
     width: 100%;
     padding: 16px;
     background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(255, 69, 0, 0.1);
+    border: 1px solid var(--border-primary);
     border-radius: 12px;
     color: #333;
     font-size: 16px;
@@ -325,8 +327,8 @@ body::before {
 .google-btn:hover {
     background: white;
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.1);
-    border-color: rgba(255, 69, 0, 0.2);
+    box-shadow: 0 4px 15px var(--glow-primary);
+    border-color: var(--border-secondary);
 }
 
 .google-icon {
@@ -337,37 +339,37 @@ body::before {
 
 .auth-link {
     text-align: center;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
 .auth-link a {
-    color: #ff6347;
+    color: var(--accent-tomato);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .auth-link a:hover {
-    color: #ff4500;
-    text-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
+    color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--glow-secondary);
 }
 
-.footer {
+.auth-footer {
     position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted);
     font-size: 14px;
     z-index: 2;
 }
 
-.footer .highlight {
-    color: #ff6347;
+.auth-footer .highlight {
+    color: var(--accent-tomato);
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+    text-shadow: 0 0 10px var(--glow-secondary);
 }
 
 .user-avatars {
@@ -381,14 +383,14 @@ body::before {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 69, 0, 0.3);
-    background: linear-gradient(135deg, #ff6b6b, #ff4500);
+    border: 2px solid var(--border-primary);
+    background: linear-gradient(135deg, #ff6b6b, var(--accent-primary));
     margin-left: -8px;
     transition: transform 0.3s ease;
 }
 
-.avatar:nth-child(1) { background: linear-gradient(135deg, #ff6347, #dc143c); }
-.avatar:nth-child(2) { background: linear-gradient(135deg, #ff4500, #8b0000); }
+.avatar:nth-child(1) { background: linear-gradient(135deg, var(--accent-tomato), var(--accent-crimson)); }
+.avatar:nth-child(2) { background: linear-gradient(135deg, var(--accent-primary), var(--accent-quaternary)); }
 .avatar:nth-child(3) { background: linear-gradient(135deg, #ff1493, #b22222); }
 .avatar:nth-child(4) { background: linear-gradient(135deg, #ff8c00, #a0522d); }
 .avatar:nth-child(5) { background: linear-gradient(135deg, #cd5c5c, #800000); }
@@ -410,30 +412,30 @@ body::before {
     min-width: 18px;
     height: 18px;
     margin-top: 2px;
-    accent-color: #ff4500;
+    accent-color: var(--accent-primary);
 }
 
 .checkbox-group label {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.4;
     cursor: pointer;
 }
 
 .checkbox-group label a {
-    color: #ff6347;
+    color: var(--accent-tomato);
     text-decoration: none;
 }
 
 .checkbox-group label a:hover {
-    color: #ff4500;
+    color: var(--accent-primary);
     text-decoration: underline;
 }
 
 .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255, 69, 0, 0.4);
+    background: var(--glow-tertiary);
     transform: scale(0);
     animation: ripple-animation 0.6s linear;
     pointer-events: none;
@@ -469,7 +471,7 @@ body::before {
         max-width: 380px;
     }
     
-    .footer {
+    .auth-footer {
         bottom: 20px;
         left: 20px;
         right: 20px;

@@ -3,7 +3,7 @@
     font-weight: 800;
     margin-top: 100px;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #ff4500 0%, #dc143c 50%, #ff6347 100%);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 50%, var(--accent-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -26,7 +26,7 @@
  
 .card {
   width: 250px;
-  background:#4a1c1c;
+  background:var(--bg-quaternary);
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -43,7 +43,6 @@
 .card p {
   margin-top: 12px;
   font-size: 16px;
-  color: #ffffff;
 }
  
 .card:hover {

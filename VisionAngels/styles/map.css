@@ -15,17 +15,17 @@
     top: 20px;
     left: 20px;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--overlay-heavy);
     backdrop-filter: blur(10px);
     padding: 1.5rem;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-primary);
     max-width: 300px;
 }
 
 .map-overlay h2 {
     margin-bottom: 1rem;
-    color: #ff8c42;
+    color: var(--accent-secondary);
     font-size: 1.3rem;
 }
 
@@ -40,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     border-radius: 6px;
 }
 
@@ -50,7 +50,7 @@
 
 .stat-value {
     font-weight: bold;
-    color: #ff6b6b;
+    color: var(--accent-tomato);
 }
 
 .legend {
@@ -60,7 +60,7 @@
 .legend h3 {
     margin-bottom: 0.5rem;
     font-size: 1rem;
-    color: #ffcccc;
+    color: var(--text-tertiary);
 }
 
 .popup-content {
@@ -102,29 +102,29 @@
 
 .control-btn {
     padding: 0.75rem;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--overlay-heavy);
+    border: 1px solid var(--border-secondary);
     border-radius: 6px;
-    color: white;
+    color: var(--text-primary);
     cursor: pointer;
     transition: all 0.3s;
     font-size: 0.9rem;
 }
 
 .control-btn:hover {
-    background: rgba(255, 68, 68, 0.2);
-    border-color: #ff4444;
+    background: var(--overlay-light);
+    border-color: var(--accent-secondary);
 }
 
 .control-btn.active {
-    background: #ff4444;
+    background: var(--accent-secondary);
 }
 
 .mapboxgl-popup-content {
-    background: rgba(0, 0, 0, 0.9) !important;
+    background: var(--overlay-blur) !important;
     border-radius: 8px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
+    border: 1px solid var(--border-secondary) !important;
+    color: var(--text-primary) !important;
     padding: 1rem !important;
     min-width: 250px !important;
 }
@@ -132,21 +132,21 @@
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
-    border-bottom-color: rgba(0, 0, 0, 0.9) !important;
+    border-bottom-color: var(--overlay-blur) !important;
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
-    border-top-color: rgba(0, 0, 0, 0.9) !important;
+    border-top-color: var(--overlay-blur) !important;
 }
 
 .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: rgba(0, 0, 0, 0.9) !important;
+    border-right-color: var(--overlay-blur) !important;
 }
 
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: rgba(0, 0, 0, 0.9) !important;
+    border-left-color: var(--overlay-blur) !important;
 }
 
 .popup-header {
@@ -165,7 +165,7 @@
 
 .popup-severity.high { background: #ef4444; }
 .popup-severity.medium { background: #fb923c; }
-.popup-severity.low { background: #4ade80; color: black; }
+.popup-severity.low { background: #4ade80; }
 
 .popup-details {
     font-size: 0.9rem;
