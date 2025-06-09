@@ -86,45 +86,6 @@ body {
     color: #ffd9b3;
 }
 
-.footer {
-    background: rgba(26, 15, 15, 0.95);
-    border-top: 1px solid rgba(255, 69, 0, 0.2);
-    padding: 3rem 2rem 1rem;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.footer-section h3 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.footer-section p,
-.footer-section a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    line-height: 1.6;
-}
-
-.footer-section a:hover {
-    color: #ff6347;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 69, 0, 0.1);
-    margin-top: 2rem;
-    padding-top: 1rem;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-}
-
 @media (max-width: 768px) {
     .page-title {
         font-size: 2rem;
