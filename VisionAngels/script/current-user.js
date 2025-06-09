@@ -1,4 +1,3 @@
-// currentUser.js
 import { auth } from "../data/firebase-config.js";
 
 // Function to animate text letter by letter with fire-themed effects
@@ -45,7 +44,7 @@ function animateText(element, text, delay = 60) {
 document.addEventListener('DOMContentLoaded', () => {
     const navCta = document.querySelector('.nav-cta');
 
-    if (!navCta) return; // navbar not present
+    if (!navCta) return;
 
     auth.onAuthStateChanged(user => {
         if (user) {
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 200);
 
             document.getElementById('logoutBtn').addEventListener('click', async () => {
-                // Add fade out animation before logout
                 greetingElement.style.transition = 'all 0.3s ease';
                 greetingElement.style.opacity = '0';
                 greetingElement.style.transform = 'translateX(-10px)';
@@ -76,13 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         } else {
-            // Show original Sign In / Join buttons with fade in
             navCta.innerHTML = `
-                <a href="pages/sign-in.html" class="btn-nav btn-secondary" style="opacity: 0; transform: translateX(10px);">Sign In</a>
-                <a href="pages/sign-up.html" class="btn-nav btn-primary" style="opacity: 0; transform: translateX(10px);">Join Now</a>
+                <a href="/pages/sign-in.html" class="btn-nav btn-secondary" style="opacity: 0; transform: translateX(10px);">Sign In</a>
+                <a href="/pages/sign-in.html" class="btn-nav btn-primary" style="opacity: 0; transform: translateX(10px);">Join Now</a>
             `;
             
-            // Animate buttons in
             const buttons = navCta.querySelectorAll('.btn-nav');
             buttons.forEach((btn, index) => {
                 btn.style.transition = 'all 0.4s ease';

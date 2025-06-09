@@ -1,24 +1,13 @@
 import { db } from "../data/firebase-config.js";
-import { 
-  collection, 
-  onSnapshot, 
-  getDocs, 
-  doc, 
-  getDoc,
-  updateDoc 
-} from "https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js";
+import { collection, onSnapshot, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
 
-import { 
-  getAuth, 
-  onAuthStateChanged 
-} from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGFrYW5jaG5kciIsImEiOiJjbTVubWZ5ZjIwOTJkMnFzaWZyYnJ6Z2plIn0.MGmgQ6xd_3LJwGv3nWPgNA'; // Replace with your actual token
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGFrYW5jaG5kciIsImEiOiJjbTVubWZ5ZjIwOTJkMnFzaWZyYnJ6Z2plIn0.MGmgQ6xd_3LJwGv3nWPgNA';
 
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v11',
-  center: [25.4858, 42.7339], // Bulgaria center
+  center: [25.4858, 42.7339], // Bulgaria
   zoom: 6
 });
 
@@ -45,7 +34,6 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     currentUserInfo = null;
     alert("User is not logged in. Please log in to use the app.");
-    // Optionally redirect to login page here
   }
 });
 
