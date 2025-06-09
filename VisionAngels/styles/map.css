@@ -236,6 +236,16 @@ body::before {
     color: #ffcccc;
 }
 
+.popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 .legend-item {
     display: flex;
     align-items: center;

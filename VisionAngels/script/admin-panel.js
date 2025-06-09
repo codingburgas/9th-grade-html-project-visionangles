@@ -269,8 +269,7 @@ document.getElementById("editEmail").addEventListener("blur", (e) => {
   }
 });
 
-// Mobile menu toggle (basic implementation)
-    document.querySelector('.mobile-toggle').addEventListener('click', function() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
+document.querySelector('.mobile-toggle').addEventListener('click', function() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+});

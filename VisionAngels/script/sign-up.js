@@ -7,6 +7,20 @@ import { validateForm, initUIEffects } from "./auth.js";
 document.addEventListener('DOMContentLoaded', () => {
     initUIEffects();
 
+    const roleSelect = document.getElementById('role');
+    const regionGroup = document.getElementById('regionGroup');
+
+    // Show/hide region selector based on role
+    roleSelect.addEventListener('change', () => {
+        if (roleSelect.value === 'volunteer') {  // Firefighter role is 'volunteer' as per your HTML
+            regionGroup.style.display = 'block';
+            regionGroup.querySelector('select').setAttribute('required', 'required');
+        } else {
+            regionGroup.style.display = 'none';
+            regionGroup.querySelector('select').removeAttribute('required');
+        }
+    });
+
     const signUpForm = document.getElementById('signUpForm');
     if (signUpForm) {
         signUpForm.addEventListener('submit', async (e) => {
@@ -16,8 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lastName = document.getElementById('lastName').value.trim();
                 const email = document.getElementById('signupEmail').value.trim();
                 const phone = document.getElementById('phone').value.trim();
-                const role = document.getElementById('role').value;
+                const role = roleSelect.value;
                 const password = document.getElementById('password').value;
+
+                // Get region if role is firefighter
+                let region = null;
+                if (role === 'volunteer') {
+                    region = document.getElementById('region').value;
+                }
 
                 try {
                     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -29,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         email: user.email,
                         phone,
                         role,
+                        region, // add region only if present (can be null)
                         createdAt: new Date().toISOString(),
                     });
 
