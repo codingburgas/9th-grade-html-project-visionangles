@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vision Angels - Protecting Communities Together</title>
     <link rel="stylesheet" href="styles/main.css">
+    
+    <script type="module" src="script/current-user.js"></script>
 </head>
 <body>
     <div class="fire-particles" id="fireParticles"></div>
@@ -25,9 +27,13 @@
             </ul>
 
             <div class="nav-cta">
+    
                 <a href="pages/sign-in.html" class="btn-nav btn-secondary" style="visibility: hidden;">Sign In</a>
                 <a href="pages/sign-up.html" class="btn-nav btn-primary" style="visibility: hidden;">Join Now</a>
             </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
 
             <button class="mobile-toggle">☰</button>
         </div>
@@ -124,7 +130,7 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #ff4500, #dc143c); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🔥</div>
+                    <div class="gallery-icon">🔥</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Wildfire Detection</h3>
                         <p class="gallery-description">Early detection of wildfires using satellite imagery and AI analysis</p>
@@ -132,7 +138,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #ff6347, #ff1493); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🚒</div>
+                    <div class="gallery-icon">🚒</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Emergency Response</h3>
                         <p class="gallery-description">Coordinated response teams dispatched within minutes of fire detection</p>
@@ -140,7 +146,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #ff8c00, #b22222); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">📱</div>
+                    <div class="gallery-icon">📱</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Mobile Alerts</h3>
                         <p class="gallery-description">Instant notifications sent to all users in affected areas</p>
@@ -148,7 +154,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #cd5c5c, #8b0000); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🗺️</div>
+                    <div class="gallery-icon">🗺️</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Interactive Maps</h3>
                         <p class="gallery-description">Real-time fire tracking with evacuation routes and safe zones</p>
@@ -156,7 +162,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #ff4500, #ff6347); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">👥</div>
+                    <div class="gallery-icon">👥</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Community Support</h3>
                         <p class="gallery-description">Local communities working together to prevent and respond to fires</p>
@@ -164,7 +170,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <div style="background: linear-gradient(45deg, #dc143c, #a0522d); display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🏆</div>
+                    <div class="gallery-icon">🏆</div>
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Success Stories</h3>
                         <p class="gallery-description">Thousands of lives saved and properties protected worldwide</p>
@@ -226,7 +232,5 @@
             </div>
         </div>
     </footer>
-
-    <script type="module" src="script/current-user.js"></script>
 
 </body>

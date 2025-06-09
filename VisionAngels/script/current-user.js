@@ -12,7 +12,7 @@ function animateText(element, text, delay = 60) {
         span.textContent = letter === ' ' ? '\u00A0' : letter;
         span.style.opacity = '0';
         span.style.transform = 'translateY(15px) scale(0.8)';
-        span.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        span.style.transition = 'all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
         span.style.display = 'inline-block';
         span.style.filter = 'blur(2px)';
         
@@ -89,4 +89,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+});
+
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('.theme-icon');
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+// Function to set theme
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.textContent = theme === 'dark' ? '🔆' : '🌙';
+    currentTheme = theme;
+    localStorage.setItem('theme', theme);
+}
+
+// Function to switch theme
+function switchTheme() {
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Set initial theme
+    setTheme(currentTheme);
+    
+    // Add click event listener
+    themeToggle.addEventListener('click', switchTheme);
 });
