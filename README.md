@@ -62,9 +62,11 @@ If you want to clone our repo locally you can paste the following command in you
 <hr>
 <h2>Documents 🗂</h2>
 
-- <a href = ""> Presentation </a><br>
+- <a href = "https://codingburgas-my.sharepoint.com/:p:/g/personal/dvpeeva23_codingburgas_bg/EXjuWsZfnqVDpQK6jP750u8BN2poDiIs60w_yXpf1aa5hw?rtime=8gCM32So3Ug"> Presentation </a><br>
 
-- <a href = ""> Documentation </a><br>
+- <a href = "https://codingburgas-my.sharepoint.com/:w:/g/personal/vmdamyanova23_codingburgas_bg/EdhzIhEcJWlKmubkp_3_cUsBCxIdCIAfvjSZw5YHYOdT3Q?rtime=O_RRFWWo3Ug"> Documentation - Word</a><br>
+
+- <a href = "https://codingburgas-my.sharepoint.com/:x:/g/personal/vmdamyanova23_codingburgas_bg/EUQRIdOzyrBHmiVHD1cO2a4BKHTsuslaTOW8Ug5BvvN6FA?wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1749590648271&web=1"> QA Documentation </a><br>
 <hr>
 <h2>👩🏽💻Our Team💻🧑🏽</h2>
 
