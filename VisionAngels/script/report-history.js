@@ -211,7 +211,11 @@ Keep the response concise but actionable, focusing on practical insights for fir
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+<<<<<<< HEAD
+        'Authorization': 'Bearer API-KEY' // Replace with api key
+=======
         'Authorization': 'Bearer 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' // Replace with your actual API key
+>>>>>>> a14ce18780662de305a7f519ec1bf1924b7c0782
       },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
