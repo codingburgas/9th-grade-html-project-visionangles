@@ -3,7 +3,15 @@
 <div align="center">
 <img src="https://github.com/codingburgas/9th-grade-html-project-visionangles/blob/main/VisionAngels/assets/logo.png" alt="Logo" width="500"/>
 </div>
- 
+
+<p align="center">
+  <img src="https://img.shields.io/badge/issues-12-%23d97706?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/commits-43-%233b82f6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/lines%20of%20code-18k-%23065f46?style=for-the-badge" />
+</p>
+
+<br>
+
 ## About Our Site 🔥
 
 Our website was created to gather important information about Fire Safety and Civil Protection in one place. We wanted it to be easy to find, understandable and well-organized. <br>
