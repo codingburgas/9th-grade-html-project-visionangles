@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         address,
         description,
         phone,
+        status: 'active',
         timestamp: serverTimestamp()
       });
 

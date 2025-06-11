@@ -131,7 +131,7 @@ body::before {
     margin-bottom: 40px;
 }
 
-.logo-icon {
+.logo-icon-auth {
     width: 48px;
     height: 48px;
     background: var(--gradient-accent);
@@ -145,8 +145,7 @@ body::before {
     box-shadow: 0 4px 15px var(--glow-primary);
 }
 
-.logo-icon::before {
-    content: '🔥';
+.logo-icon-auth::before {
     font-size: 24px;
     animation: flame-dance 2s ease-in-out infinite alternate;
 }
@@ -156,7 +155,7 @@ body::before {
     100% { transform: scale(1.1) rotate(2deg); }
 }
 
-.logo-icon::after {
+.logo-icon-auth::after {
     content: '';
     position: absolute;
     top: -50%;

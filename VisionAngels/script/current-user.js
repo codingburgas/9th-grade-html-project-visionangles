@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else {
             navCta.innerHTML = `
-                <a href="pages/sign-in.html" class="btn-nav btn-secondary">Sign In</a>
-                <a href="pages/sign-up.html" class="btn-nav btn-primary">Join Now</a>
+                <a href="/pages/sign-in.html" class="btn-nav btn-secondary">Sign In</a>
+                <a href="/pages/sign-up.html" class="btn-nav btn-primary">Join Now</a>
             `;
         }
     });
