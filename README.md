@@ -5,8 +5,8 @@
 </div>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/issues-12-%23d97706?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/commits-43-%233b82f6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/issues-20-%23d97706?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/commits-46-%233b82f6?style=for-the-badge" />
   <img src="https://img.shields.io/badge/lines%20of%20code-18k-%23065f46?style=for-the-badge" />
 </p>
 
