@@ -106,7 +106,6 @@ h2, h3 {
 }
 .chart-container canvas {
  width: 100% !important;
- height: 400px !important;
  display: block;
  margin: 0 auto;
  border-radius: 12px;

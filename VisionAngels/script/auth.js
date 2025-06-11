@@ -113,12 +113,4 @@ export function initUIEffects() {
             setTimeout(() => ripple.remove(), 600);
         });
     });
-
-    const googleBtns = document.querySelectorAll('.google-btn');
-    googleBtns.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            alert('Google Sign-In would be integrated here!');
-        });
-    });
 }

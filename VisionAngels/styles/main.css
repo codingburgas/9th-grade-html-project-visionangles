@@ -43,6 +43,8 @@
     --gradient-accent: linear-gradient(135deg, #ff4500 0%, #dc143c 100%);
     --gradient-text: linear-gradient(135deg, #fff 0%, #ff6347 50%, #ff4500 100%);
     --gradient-overlay: linear-gradient(45deg, rgba(255, 69, 0, 0.8), rgba(220, 20, 60, 0.6));
+
+    --team-bg-image: url('../assets/background-team-dark.jpg');
 }
 
 [data-theme="light"] {
@@ -90,6 +92,8 @@
     --gradient-accent: linear-gradient(135deg, #ffccb9 0%, #ff8aa2 100%);
     --gradient-text: linear-gradient(135deg, #2c1414 0%, #e63946 50%, #ff4500 100%);
     --gradient-overlay: linear-gradient(45deg, rgba(255, 69, 0, 0.7), rgba(220, 20, 60, 0.7));
+
+    --team-bg-image: url('../assets/background-team-light.jpg');
 }
 
 .theme-toggle {
@@ -232,6 +236,11 @@ body::before {
     margin: 0 auto;
 }
 
+.logo-icon {
+    width: 100%;
+    height: 2vh;
+}
+
 .logo-nav {
     display: flex;
     align-items: center;
@@ -239,8 +248,8 @@ body::before {
 }
 
 .logo-icon-nav {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: var(--gradient-accent);
     border-radius: 8px;
     display: flex;
@@ -667,7 +676,7 @@ body::before {
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

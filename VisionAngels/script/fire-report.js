@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const severity = document.querySelector('input[name="severity"]:checked')?.value;
     const address = document.getElementById('address').value.trim();
     const description = document.getElementById('description').value.trim();
+    const phone = document.getElementById('phone').value.trim();
 
     if (!severity) {
       alert("Please select the fire severity.");

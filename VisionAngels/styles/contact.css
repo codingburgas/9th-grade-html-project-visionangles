@@ -13,7 +13,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/fire.jpg'); 
+  background-image: url('../assets/background-team-dark.jpg'); 
   background-size: cover;
   background-position: center;
   filter: blur(5px) brightness(0.6);
@@ -32,7 +32,7 @@
 
 .hero-text h1 {
   font-size: 3rem;
-  color: var(--accent-primary);
+  color: var(--accent-secondary);
   margin-bottom: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -42,7 +42,7 @@
   max-width: 600px;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--text-primary);
+  color: #f0e8e8;;
 }
 
 .features {
@@ -107,19 +107,11 @@
     text-align: center;
 }
 
+.contact-email{
+    color: var(--text-secondary);
+}
+
 @media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .search-container {
-    min-width: 100%;
-  }
-
-  #exportBtn {
-    min-width: 100%;
-  }
 
   table {
     font-size: 14px;
@@ -127,15 +119,6 @@
 
   th, td {
     padding: 12px 8px;
-  }
-
-  .modal-content {
-    width: 95%;
-    margin: 5% auto;
-  }
-
-  .modal-body {
-    padding: 20px;
   }
 
   .hero-title {

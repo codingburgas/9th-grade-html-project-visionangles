@@ -64,7 +64,7 @@ function getColorBySeverity(severity) {
 }
 
 function renderMarkers(fires) {
-  fires = fires.filter(fire => fire.active != false)
+  fires = fires.filter(fire => fire.status == 'active')
 
   markers.forEach(marker => marker.remove());
   markers = [];
@@ -231,7 +231,7 @@ document.body.addEventListener('click', async (event) => {
     try {
       const fireRef = doc(db, "fires", fireId);
       await updateDoc(fireRef, {
-        active: false
+        status: 'inactive'
       });
 
       alert("Fire marked as inactive.");

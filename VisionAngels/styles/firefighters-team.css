@@ -28,18 +28,36 @@
 }
 
 .team-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: var(--bg-quaternary);
     border-radius: 1rem;
+    height: 40vh;
     padding: 2rem;
     transition: all 0.3s ease-in-out;
     backdrop-filter: blur(6px);
-    background: url('../assets/background\ team.webp'); 
+    background: var(--team-bg-image); 
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .team-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px var(--glow-primary);
+}
+
+.team-text {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    backdrop-filter: blur(4px);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 40px;
+    clip-path: inset(0 round 10px);
 }
  
 .team-image img {
@@ -59,7 +77,7 @@
 
 .team-content {
     font-size: 1.5rem;
-    color: var(--text-secondary);
+    color: #f0e8e8;;
     font-weight: 500;
 }
 
@@ -72,6 +90,7 @@
 }
 
 .info-button {
+  text-decoration: none;
   padding: 8px 16px;
   border: none;
   width: 110px;

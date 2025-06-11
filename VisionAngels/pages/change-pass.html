@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vision Angels - Sign In</title>
-    <link rel="stylesheet" href="../styles/changepass.css">
+  
+    <link rel="icon" type="image/x-icon" href="/assets/logo-small.png">
+    <link rel="stylesheet" href="../styles/auth.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script type="module" src="../script/current-user.js"></script>
 </head>
 <body>
     <div class="fire-particles" id="fireParticles"></div>
     
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <div class="logo">
             <div class="logo-icon"></div>
             <h1>Vision Angels</h1>
         </div>
 
-        <p class="form-info-text">Enter a new password to continue.</p>
-
         <form id="signInForm">
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+
             <div class="form-group">
                 <input type="password" id="oldPassword" placeholder="Old Password" required>
             </div>
@@ -26,16 +36,20 @@
                 <input type="password" id="newPassword" placeholder="New Password" required>
             </div>
 
-             <div class="form-group password-group">
+            <div class="form-group password-group">
                 <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
             </div>
 
             <button type="submit" class="primary-btn">Change Password</button>
 
+            <div class="password-links">
+                <a href="/pages/sign-in.html" class="change-link">Back to Sign In</a>
+            </div>
         </form>
+
 
     </div>
 
-    <script src="../script/changepass.js"></script>
+    <script type="module" src="../script/change-pass.js"></script>
 </body>
 </html>
