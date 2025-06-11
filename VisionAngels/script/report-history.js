@@ -10,6 +10,7 @@ const searchInput = document.getElementById("searchInput");
 const statusFilter = document.getElementById("statusFilter");
 const severityFilter = document.getElementById("severityFilter");
 const exportBtn = document.getElementById("exportBtn");
+const feedbackBtn = document.getElementById("feedbackBtn");
 
 const statusStyles = {
   active: { class: 'status-active', text: 'Active' },
@@ -112,6 +113,195 @@ function filterReports() {
   });
 }
 
+function prepareDataForAI() {
+  const reportData = allReports.map(({ data }) => {
+    const date = data.timestamp?.toDate?.() || new Date(data.timestamp) || new Date();
+    return {
+      date: date.toISOString().split('T')[0],
+      location: data.location || data.address || 'Unknown',
+      severity: data.severity || 'low',
+      status: data.status || 'active',
+      description: data.description || 'No description',
+      month: date.getMonth() + 1,
+      year: date.getFullYear(),
+      dayOfWeek: date.getDay()
+    };
+  });
+
+  const totalReports = reportData.length;
+  const severityCounts = reportData.reduce((acc, report) => {
+    acc[report.severity] = (acc[report.severity] || 0) + 1;
+    return acc;
+  }, {});
+
+  const statusCounts = reportData.reduce((acc, report) => {
+    acc[report.status] = (acc[report.status] || 0) + 1;
+    return acc;
+  }, {});
+
+  const locationCounts = reportData.reduce((acc, report) => {
+    acc[report.location] = (acc[report.location] || 0) + 1;
+    return acc;
+  }, {});
+
+  const monthCounts = reportData.reduce((acc, report) => {
+    acc[report.month] = (acc[report.month] || 0) + 1;
+    return acc;
+  }, {});
+
+  return {
+    totalReports,
+    severityCounts,
+    statusCounts,
+    locationCounts,
+    monthCounts,
+    recentReports: reportData.slice(0, 10)
+  };
+}
+
+async function getFeedbackFromAI() {
+  const data = prepareDataForAI();
+  
+  if (data.totalReports === 0) {
+    alert("No fire reports available for analysis.");
+    return;
+  }
+
+  const prompt = `As a fire prediction and safety expert, analyze this fire report data and provide actionable insights for future fire prevention and prediction:
+
+Total Reports: ${data.totalReports}
+Severity Distribution: ${JSON.stringify(data.severityCounts)}
+Status Distribution: ${JSON.stringify(data.statusCounts)}
+Top Locations: ${JSON.stringify(Object.entries(data.locationCounts).sort((a, b) => b[1] - a[1]).slice(0, 5))}
+Monthly Distribution: ${JSON.stringify(data.monthCounts)}
+
+Recent Reports Sample:
+${data.recentReports.map(r => `- ${r.date}: ${r.location} (${r.severity} severity) - ${r.description.substring(0, 100)}`).join('\n')}
+
+Please provide:
+1. **Fire Pattern Analysis**: Identify trends in timing, locations, and severity
+2. **Risk Predictions**: Predict high-risk periods, locations, or conditions
+3. **Prevention Recommendations**: Specific actions to prevent future fires
+4. **Resource Allocation**: Suggestions for optimal firefighting resource deployment
+5. **Early Warning Indicators**: Key signs that might predict future fire incidents
+
+Keep the response concise but actionable, focusing on practical insights for fire prevention and emergency response planning.
+ Use this format:
+
+  🔥 Fire Pattern Analysis
+  [Concise analysis with 1-2 emojis per line]
+
+  🔮 Risk Predictions
+  [Predictions with relevant emojis]
+
+  💡 Prevention Tips
+  [Actionable tips with emojis]
+
+  🚒 Resource Planning
+  [Resource suggestions with emojis]
+
+  ⚠️ Early Warnings
+  [Warning signs with emojis]`;
+
+  try {
+    feedbackBtn.textContent = "Getting AI Analysis...";
+    feedbackBtn.disabled = true;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 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' // Replace with your actual API key
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          {
+            role: 'system',
+            content: 'You are an expert fire safety analyst and prediction specialist. Provide clear, actionable insights based on fire report data.'
+          },
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        max_tokens: 1500,
+        temperature: 0.7
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    const result = await response.json();
+    const feedback = result.choices[0].message.content;
+
+    document.getElementById("feedbackContent").innerHTML = feedback.replace(/\n/g, '<br>');
+    openModal("feedbackModal");
+
+  } catch (error) {
+    console.error("Error getting AI feedback:", error);
+    
+    const fallbackFeedback = generateFallbackFeedback(data);
+    document.getElementById("feedbackContent").innerHTML = fallbackFeedback;
+    openModal("feedbackModal");
+    
+    alert("AI service unavailable. Showing basic analysis instead.");
+  } finally {
+    feedbackBtn.textContent = "🤖 Get AI Feedback";
+    feedbackBtn.disabled = false;
+  }
+}
+
+function generateFallbackFeedback(data) {
+  const highRiskMonths = Object.entries(data.monthCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(([month, count]) => {
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${monthNames[month - 1]} (${count} reports)`;
+    });
+
+  const topLocations = Object.entries(data.locationCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(([location, count]) => `${location} (${count} incidents)`);
+
+  const highSeverityRate = ((data.severityCounts.high || 0) / data.totalReports * 100).toFixed(1);
+
+  return `
+    <h3>🔥 Fire Report Analysis</h3>
+    
+    <h4>📊 Key Statistics:</h4>
+    <ul>
+      <li>Total Reports Analyzed: ${data.totalReports}</li>
+      <li>High Severity Rate: ${highSeverityRate}%</li>
+      <li>Active Cases: ${data.statusCounts.active || 0}</li>
+    </ul>
+
+    <h4>📅 High-Risk Periods:</h4>
+    <ul>
+      ${highRiskMonths.map(month => `<li>${month}</li>`).join('')}
+    </ul>
+
+    <h4>📍 Frequent Fire Locations:</h4>
+    <ul>
+      ${topLocations.map(location => `<li>${location}</li>`).join('')}
+    </ul>
+
+    <h4>💡 Recommendations:</h4>
+    <ul>
+      <li>Increase preventive measures during high-risk months</li>
+      <li>Deploy additional resources to frequently affected areas</li>
+      <li>Implement early warning systems in high-risk locations</li>
+      <li>Regular safety inspections in areas with recurring incidents</li>
+    </ul>
+
+    <p><em>Note: This is a basic analysis. For advanced AI insights, please configure the OpenAI API key.</em></p>
+  `;
+}
+
 onAuthStateChanged(auth, async () => {
   try {
     const reportsSnapshot = await getDocs(collection(db, "fires"));
@@ -141,6 +331,7 @@ onAuthStateChanged(auth, async () => {
 searchInput.addEventListener("input", filterReports);
 statusFilter.addEventListener("change", filterReports);
 severityFilter.addEventListener("change", filterReports);
+feedbackBtn.addEventListener("click", getFeedbackFromAI);
 
 exportBtn.addEventListener("click", () => {
   try {
@@ -320,12 +511,12 @@ window.confirmDelete = async function() {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-
   window.addEventListener("click", (event) => {
     if (event.target.classList.contains("modal")) {
       closeModal("viewModal");
       closeModal("updateModal");
       closeModal("deleteModal");
+      closeModal("feedbackModal");
     }
   });
 
@@ -334,6 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal("viewModal");
       closeModal("updateModal");
       closeModal("deleteModal");
+      closeModal("feedbackModal");
     }
   });
 

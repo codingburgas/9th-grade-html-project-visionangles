@@ -64,6 +64,7 @@
         </select>
       </div>
       <button id="exportBtn">Export to PDF</button>
+      <button id="feedbackBtn" class="feedback-btn">🤖 Get AI Feedback</button>
     </div>
 
     <div class="info">
@@ -180,6 +181,24 @@
         <div class="modal-actions">
           <button type="button" class="modal-btn cancel" onclick="closeModal('deleteModal')">Cancel</button>
           <button type="button" class="modal-btn danger" onclick="confirmDelete()">Delete Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Feedback Modal -->
+  <div id="feedbackModal" class="modal feedback-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🤖 AI Fire Prediction Analysis</h2>
+        <span class="close" onclick="closeModal('feedbackModal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="feedbackContent" class="feedback-content">
+          <!-- AI feedback will be populated here -->
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn cancel" onclick="closeModal('feedbackModal')">Close</button>
         </div>
       </div>
     </div>
