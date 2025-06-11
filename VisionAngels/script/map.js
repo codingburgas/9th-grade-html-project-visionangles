@@ -33,7 +33,6 @@ onAuthStateChanged(auth, async (user) => {
     }
   } else {
     currentUserInfo = null;
-    alert("User is not logged in. Please log in to use the app.");
   }
 });
 
@@ -205,7 +204,7 @@ async function showRouteToFire(fireCoords) {
 
 document.body.addEventListener('click', async (event) => {
   if (event.target.classList.contains('get-route-btn')) {
-    event.target.disabled = true; // Prevent multiple clicks
+    event.target.disabled = true;
 
     if (!currentUserInfo) {
       alert("User is not logged in.");
@@ -245,19 +244,18 @@ document.body.addEventListener('click', async (event) => {
 });
 
 
-// Create pulsing dot element
 const pulsingDot = document.createElement('div');
+
 pulsingDot.style.width = '20px';
 pulsingDot.style.height = '20px';
 pulsingDot.style.borderRadius = '50%';
 pulsingDot.style.backgroundColor = 'rgba(56, 135, 190, 1)';
 pulsingDot.style.border = '3px solid white';
 pulsingDot.style.position = 'relative';
-pulsingDot.style.cursor = 'pointer'; // so it looks clickable
+pulsingDot.style.cursor = 'pointer';
 pulsingDot.style.boxShadow = '0 0 0 0 rgba(0, 122, 255, 0.7)';
 pulsingDot.style.animation = 'pulse 2s infinite';
 
-// Add CSS keyframes for pulse animation
 const style = document.createElement('style');
 style.textContent = `
   @keyframes pulse {

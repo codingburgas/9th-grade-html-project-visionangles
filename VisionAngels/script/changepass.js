@@ -62,19 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Check if new password is the same as old
     if (oldPassword.value === newPassword.value) {
       alert("⚠️ New password must be different from the old password.");
       return;
     }
 
-    // Check if new password and confirm password match
     if (newPassword.value !== confirmPassword.value) {
       alert("🚫 New password and confirm password do not match.");
       return;
     }
 
-    // If all checks pass
     alert("✅ Password changed successfully!");
     window.location.href = "../pages/sign-in.html";
   });

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     
     <script type="module" src="../script/current-user.js"></script>
+    <script type="module" src="/script/role-redirect.js"></script>
 </head>
 <body>
     <nav class="navbar" id="navbar">
@@ -18,12 +19,12 @@
             </div>
 
             <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="#" class="active">Report Fire</a></li>
-                <li><a href="map.html">Live Map</a></li>
-                <li><a href="firefighters-team.html">Our Teams</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/pages/map.html">Live Map</a></li>
+                <li><a href="/pages/firefighters-team.html">Our Teams</a></li>
+                <li><a href="/pages/report-history.html">Reports</a></li>
+                <li><a href="/pages/contact.html">Contact</a></li>
             </ul>
 
             <div class="nav-cta">
@@ -78,6 +79,11 @@
                             <input type="text" id="longitude" class="form-input" placeholder="Longitude" readonly>
                         </div>
                         <button type="button" class="location-btn" id="getLocationBtn">📍 Get My Current Location</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="phone">Phone Number</label>
+                        <input type="text" id="phone" class="form-input" placeholder="+359 87 888 8888" required>
                     </div>
 
                     <div class="form-group">

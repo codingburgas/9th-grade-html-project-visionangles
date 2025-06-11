@@ -1,5 +1,3 @@
-// auth.js
-
 export function togglePassword(inputId = 'password') {
     const passwordInput = document.getElementById(inputId);
     const toggleBtn = passwordInput.parentElement.querySelector('.password-toggle');

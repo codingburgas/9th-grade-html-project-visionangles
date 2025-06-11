@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vision Angels - Admin Panel</title>
+  <title>Vision Angels - Fire Report History</title>
   <link rel="stylesheet" href="../styles/admin-panel.css">
-    <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/main.css">
   
   <script type="module" src="../script/current-user.js"></script>
   <script type="module" src="../script/role-redirect.js"></script>
@@ -20,16 +20,15 @@
             </div>
 
             <ul class="nav-links">
-                <li><a href="/index.html" class="active">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="/pages/fire-report.html">Report Fire</a></li>
                 <li><a href="/pages/map.html">Live Map</a></li>
                 <li><a href="/pages/firefighters-team.html">Our Teams</a></li>
-                <li><a href="/pages/report-history.html">Reports</a></li>
+                <li><a href="/pages/report-history.html" class="active">Reports</a></li>
                 <li><a href="/pages/contact.html">Contact</a></li>
             </ul>
 
             <div class="nav-cta">
-    
                 <a href="/pages/sign-in.html" class="btn-nav btn-secondary" style="visibility: hidden;">Sign In</a>
                 <a href="/pages/sign-up.html" class="btn-nav btn-primary" style="visibility: hidden;">Join Now</a>
             </div>
@@ -43,25 +42,40 @@
 
   <div class="main-content">
     <div class="title">
-      <h3 class="hero-title">Admin Panel</h3>
+      <h3 class="hero-title">Fire Report History</h3>
     </div> 
 
     <div class="controls">
       <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search users...">
+        <input type="text" id="searchInput" placeholder="Search fire reports...">
+      </div>
+      <div class="filter-controls">
+        <select id="statusFilter">
+          <option value="">All Statuses</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="false-alarm">False Alarm</option>
+        </select>
+        <select id="severityFilter">
+          <option value="">All Severities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
       </div>
       <button id="exportBtn">Export to PDF</button>
     </div>
 
     <div class="info">
-      <table id="userTable">
+      <table id="reportsTable">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Role</th>
-            <th>Phone</th>
-            <th>Email</th>
+            <th>Date/Time</th>
+            <th>Location</th>
+            <th>Reporter</th>
+            <th>Severity</th>
+            <th>Status</th>
+            <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -72,47 +86,86 @@
     </div>
   </div>
 
-  <div id="editModal" class="modal">
-    <div class="modal-content">
+  <!-- View Details Modal -->
+  <div id="viewModal" class="modal">
+    <div class="modal-content modal-scrollable">
       <div class="modal-header">
-        <h2>Edit User</h2>
-        <span class="close" onclick="closeModal('editModal')">&times;</span>
+        <h2>Fire Report Details</h2>
+        <span class="close" onclick="closeModal('viewModal')">&times;</span>
       </div>
       <div class="modal-body">
-        <form id="editForm">
-          <div class="form-group">
-            <label for="editFirstName">First Name</label>
-            <input type="text" id="editFirstName" required>
+        <div class="report-details">
+          <div class="detail-group">
+            <label>Report ID:</label>
+            <span id="viewReportId"></span>
           </div>
-          <div class="form-group">
-            <label for="editLastName">Last Name</label>
-            <input type="text" id="editLastName" required>
+          <div class="detail-group">
+            <label>Date & Time:</label>
+            <span id="viewDateTime"></span>
           </div>
+          <div class="detail-group">
+            <label>Location:</label>
+            <span id="viewLocation"></span>
+          </div>
+          <div class="detail-group">
+            <label>Coordinates:</label>
+            <span id="viewCoordinates"></span>
+          </div>
+          <div class="detail-group">
+            <label>Reporter Contact:</label>
+            <span id="viewReporterContact"></span>
+          </div>
+          <div class="detail-group">
+            <label>Severity Level:</label>
+            <span id="viewSeverity" class="severity-badge"></span>
+          </div>
+          <div class="detail-group">
+            <label>Current Status:</label>
+            <span id="viewStatus" class="status-badge"></span>
+          </div>
+          <div class="detail-group">
+            <label>Description:</label>
+            <p id="viewDescription"></p>
+          </div>
+          <div class="detail-group" id="viewImageGroup" style="display: none;">
+            <label>Attached Image:</label>
+            <img id="viewImage" alt="Fire report image" style="max-width: 100%; height: auto; border-radius: 8px;">
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn cancel" onclick="closeModal('viewModal')">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Status Modal -->
+  <div id="updateModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Update Report Status</h2>
+        <span class="close" onclick="closeModal('updateModal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="updateForm">
           <div class="form-group">
-            <label for="editRole">Role</label>
-            <select id="editRole" required>
-              <option value="citizen">Citizen</option>
-              <option value="firefighter">Firefighter</option>
-              <option value="admin">Admin</option>
+            <label for="updateStatus">Status</label>
+            <select id="updateStatus" required>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="false-alarm">False Alarm</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="editPhone">Phone</label>
-            <input type="tel" id="editPhone" required>
-          </div>
-          <div class="form-group">
-            <label for="editEmail">Email</label>
-            <input type="email" id="editEmail" required>
-          </div>
           <div class="modal-actions">
-            <button type="button" class="modal-btn cancel" onclick="closeModal('editModal')">Cancel</button>
-            <button type="submit" class="modal-btn confirm">Save Changes</button>
+            <button type="button" class="modal-btn cancel" onclick="closeModal('updateModal')">Cancel</button>
+            <button type="submit" class="modal-btn confirm">Update Status</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
+  <!-- Delete Confirmation Modal -->
   <div id="deleteModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,12 +174,12 @@
       </div>
       <div class="modal-body">
         <div class="delete-warning">
-          ⚠️ This action cannot be undone. The user will be permanently removed from the system.
+          ⚠️ This action cannot be undone. The fire report will be permanently removed from the system.
         </div>
-        <p>Are you sure you want to delete <strong id="deleteUserName"></strong>?</p>
+        <p>Are you sure you want to delete this fire report?</p>
         <div class="modal-actions">
           <button type="button" class="modal-btn cancel" onclick="closeModal('deleteModal')">Cancel</button>
-          <button type="button" class="modal-btn danger" onclick="confirmDelete()">Delete User</button>
+          <button type="button" class="modal-btn danger" onclick="confirmDelete()">Delete Report</button>
         </div>
       </div>
     </div>
@@ -169,11 +222,10 @@
     </footer>
 
   <script type="module" src="../data/firebase-config.js"></script>
-  <script type="module" src="../script/admin-panel.js"></script>
+  <script type="module" src="../script/report-history.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-
 
 </body>
 </html>

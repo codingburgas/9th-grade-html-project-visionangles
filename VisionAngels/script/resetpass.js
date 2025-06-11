@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const newPassword = document.getElementById("newPassword");
   const confirmPassword = document.getElementById("confirmPassword");
 
-  // Create or select an error message container inside the form
   let errorMsg = document.getElementById("errorMsg");
   if (!errorMsg) {
     errorMsg = document.createElement("div");
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       errorMsg.textContent = "";
       alert("✅ Password has been reset successfully!");
-      window.location.href = "../pages/sign-in.html";  // Use correct relative path here
+      window.location.href = "/pages/sign-in.html";
     }
   });
 });

@@ -1,4 +1,3 @@
-// register.js
 import { auth, db } from "../data/firebase-config.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js";
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const roleSelect = document.getElementById('role');
     const regionGroup = document.getElementById('regionGroup');
 
-    // Show/hide region selector based on role
     roleSelect.addEventListener('change', () => {
         if (roleSelect.value === 'firefighter') {
             regionGroup.style.display = 'block';
@@ -33,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const role = roleSelect.value;
                 const password = document.getElementById('password').value;
 
-                // Get region if role is firefighter
                 let region = null;
                 if (role === 'firefighter') {
                     region = document.getElementById('region').value;
@@ -49,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         email: user.email,
                         phone,
                         role,
-                        region, // add region only if present (can be null)
+                        region,
                         createdAt: new Date().toISOString(),
                     });
 
                     alert('Registration successful!');
-                    window.location.href = '../pages/sign-in.html';  // Redirect to login page
+                    window.location.href = '/pages/sign-in.html';
                 } catch (error) {
                     console.error("Firebase error:", error);
                     alert("Error: " + error.message);

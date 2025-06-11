@@ -1,4 +1,3 @@
-// admin-panel.js
 import { auth, db } from '../data/firebase-config.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js';
 import { doc, getDoc, collection, getDocs, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore.js';
@@ -27,21 +26,8 @@ function createTableRow(id, data) {
   return row;
 }
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    alert("You are not signed in.");
-    window.location.href = "sign-in.html";
-    return;
-  }
-
+onAuthStateChanged(auth, async () => {
   try {
-    const userSnap = await getDoc(doc(db, "users", user.uid));
-    if (!userSnap.exists() || userSnap.data().role !== "admin") {
-      alert("Access denied. Admins only.");
-      window.location.href = "../index.html";
-      return;
-    }
-
     const usersSnapshot = await getDocs(collection(db, "users"));
     const tbody = table.querySelector('tbody');
     tbody.innerHTML = ''; // Clear existing rows

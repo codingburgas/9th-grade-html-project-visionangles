@@ -1,4 +1,3 @@
-// login.js
 import { auth } from "../data/firebase-config.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
 import { validateForm, initUIEffects } from "./auth.js";
@@ -16,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     await signInWithEmailAndPassword(auth, email, password);
                     alert('Sign in successful!');
-                    window.location.href = '../index.html';  // Redirect to home or dashboard
-                    // Add redirect or logic here
+                    window.location.href = '../index.html';
                 } catch (error) {
                     alert("Login failed: " + error.message);
                 }

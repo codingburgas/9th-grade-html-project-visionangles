@@ -1,6 +1,5 @@
 import { auth } from "../data/firebase-config.js";
 
-// Function to animate text letter by letter with fire-themed effects
 function animateText(element, text, delay = 60) {
     element.innerHTML = '';
     element.style.opacity = '1';
@@ -16,20 +15,17 @@ function animateText(element, text, delay = 60) {
         span.style.display = 'inline-block';
         span.style.filter = 'blur(2px)';
         
-        // Add fire glow effect
         if (letter !== ' ') {
             span.style.textShadow = '0 0 10px rgba(255, 69, 0, 0.8)';
         }
         
         element.appendChild(span);
         
-        // Animate each letter with a delay
         setTimeout(() => {
             span.style.opacity = '1';
             span.style.transform = 'translateY(0) scale(1)';
             span.style.filter = 'blur(0)';
             
-            // Add a subtle bounce effect
             setTimeout(() => {
                 span.style.transform = 'translateY(-2px) scale(1.05)';
                 setTimeout(() => {
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             const username = user.email.split('@')[0];
             
-            // Create elements
             navCta.innerHTML = `
                 <span class="user-greeting" style="opacity: 0; margin-right: 1rem;"></span>
                 <a href="#" id="logoutBtn" class="btn-nav btn-secondary">Log out</a>
@@ -72,10 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     location.reload();
                 }, 300);
             });
-
-        } else {
-            // Redirect to sign-in if not authenticated
-            window.location.href = '/pages/sign-in.html';
+        }
+        else {
+            navCta.innerHTML = `
+                <a href="pages/sign-in.html" class="btn-nav btn-secondary">Sign In</a>
+                <a href="pages/sign-up.html" class="btn-nav btn-primary">Join Now</a>
+            `;
         }
     });
 });
@@ -84,7 +81,6 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
 let currentTheme = localStorage.getItem('theme') || 'light';
 
-// Function to set theme
 function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     themeIcon.textContent = theme === 'dark' ? '🔆' : '🌙';
@@ -92,17 +88,13 @@ function setTheme(theme) {
     localStorage.setItem('theme', theme);
 }
 
-// Function to switch theme
 function switchTheme() {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Set initial theme
     setTheme(currentTheme);
     
-    // Add click event listener
     themeToggle.addEventListener('click', switchTheme);
 });

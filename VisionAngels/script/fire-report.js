@@ -1,4 +1,3 @@
-// fire-report.js
 import { auth, db } from "../data/firebase-config.js";
 import {
   addDoc,
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   let uploadedFiles = [];
 
-  // Handle form submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -40,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         severity,
         address,
         description,
+        phone,
         timestamp: serverTimestamp()
-        // To upload images/videos, you'd use Firebase Storage (not covered here)
       });
 
       alert('Report saved! ID: ' + docRef.id);
@@ -56,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Navbar scroll effect
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -65,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Get current location
   getLocationBtn.addEventListener('click', () => {
     getLocationBtn.disabled = true;
     getLocationBtn.textContent = '📍 Getting Location...';
@@ -102,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // File upload click/drag
   fileUpload.addEventListener('click', () => fileInput.click());
 
   fileUpload.addEventListener('dragover', (e) => {
@@ -137,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileDiv = document.createElement('div');
   fileDiv.className = 'uploaded-file';
 
-  // Create image preview if file is an image
   let previewHTML = '';
   if (file.type.startsWith('image/')) {
     const imgURL = URL.createObjectURL(file);
@@ -170,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Optional: Clear form
   window.clearForm = function () {
     form.reset();
     uploadedFiles = [];
