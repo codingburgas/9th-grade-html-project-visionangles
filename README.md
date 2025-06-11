@@ -72,9 +72,9 @@ If you want to clone our repo locally you can paste the following command in you
 
 - <a href = "https://github.com/DVPeeva23"> Desislava Peeva </a> (Scrum trainer)<br>
 
-- <a href = "https://github.com/VVValchanova23"> Valeriya Vulchanova </a> (Frontend Developer)<br>
+- <a href = "https://github.com/VVValchanova23"> Valeriya Vulchanova </a> (Backend  Developer)<br>
 
-- <a href = "https://github.com/VMDamyanova23"> Valeriya Damyanova</a> (Backend  Developer)<br>
+- <a href = "https://github.com/VMDamyanova23"> Valeriya Damyanova</a> (Frontend Developer)<br>
 
 - <a href = "https://github.com/irinadimova"> Irina Dimova </a> (Designer)<br>
 
